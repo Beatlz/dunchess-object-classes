@@ -25,4 +25,4 @@ Instantiating a new Move:
 `new Move(baseMoves?: GetMovesType[])`
 
 The move method type:
-`Move.getPossibleMoves(<CoordsType>): <CoordsType[]>`
+`Move.getPossibleSquares(<CoordsType>initialSquare): <CoordsType[]>`
