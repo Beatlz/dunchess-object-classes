@@ -1,9 +1,10 @@
 # MOVE folder
 Moves folder contains two things:
-- Move.ts (A class that creates new moves)
-- Moves folder (A folder with a list of preset moves)
+- Move.ts (a class that creates new moves)
+- Moves folder (a folder with a list of preset moves)
 
-Moves is a function type that returns an array of possible square positions (coords <CoordsType[]>) given a starting square's coord. It's also possible to pass the name of a move or the name of a piece. We can dinamically create a new moves type with the Move class.
+## Move function
+This is a function of type `GetMovesType` that returns an array of possible square positions (`coords <CoordsType[]>`) given a starting square's coord. It's also possible to pass the name of a move or the name of a piece. We can dinamically create a new moves type with the Move class.
 
 ## Examples
 
@@ -16,12 +17,12 @@ import { knightMove } from "@modules/Piece/Moves/knightMove"
 import { rookMove } from "@modules/Piece/Moves/rookMove"
 import Move from "@modules/Piece/Moves/Move"
 
-const chancellorMove = new Move({ gridSize: 16, baseMoves: [knightMove, rookMove] })
-const possibleMoves = chancellorMove.move(<CoordsType>) // Pass the initial square coords
+const chancellorMove = new Move([knightMove, rookMove])
+const possibleSquares = chancellorMove.getPossibleSquares(<CoordsType>) // Pass the initial square coords
 ```
 
 Instantiating a new Move:
-`new Move({ gridSize: <number>, baseMoves?: <GetMovesType[]> })`
+`new Move(baseMoves?: GetMovesType[])`
 
 The move method type:
-`Move.move(<CoordsType>): <CoordsType[]>`
+`Move.getPossibleMoves(<CoordsType>): <CoordsType[]>`
