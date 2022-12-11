@@ -1,1 +1,3 @@
-export interface CoordsType { x: number, y: number }
+interface CoordsType { x: number, y: number }
+
+export default CoordsType

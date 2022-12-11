@@ -1,4 +1,4 @@
-import { CoordsType } from "./CoordsType"
+import CoordsType from "./CoordsType"
 
 export type MovesType = CoordsType[]
 
