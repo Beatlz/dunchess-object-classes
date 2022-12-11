@@ -1,5 +1,5 @@
 # MOVE folder
-Moves folder contains two things:
+Move folder contains two things:
 - Move.ts (a class that creates new moves)
 - Moves folder (a folder with a list of preset moves)
 
@@ -15,10 +15,14 @@ In chess, a chancellor is a special piece (not part of the standard rules) that 
 ```
 import { knightMove } from "@modules/Piece/Moves/knightMove"
 import { rookMove } from "@modules/Piece/Moves/rookMove"
+
 import Move from "@modules/Piece/Moves/Move"
+import Piece from "@modules/Piece/Piece"
 
 const chancellorMove = new Move([knightMove, rookMove])
 const possibleSquares = chancellorMove.getPossibleSquares(<CoordsType>) // Pass the initial square coords
+
+const chancellor = new Piece(moves: <GetMovesType[]>)
 ```
 
 Instantiating a new Move:
