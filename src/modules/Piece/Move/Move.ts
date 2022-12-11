@@ -1,4 +1,4 @@
-import { CoordsType } from "@/types/CoordsType"
+import CoordsType from "@/types/CoordsType"
 import { GetMovesType, MovesType } from "@/types/MovesType"
 
 class Move {
