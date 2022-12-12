@@ -1,38 +1,38 @@
 import type { FeatureNameType, TileFeatureType, TileFeaturesListType } from "@/types/TileType"
 
 class Tile {
-	tilesFeaturesList: TileFeaturesListType
+	tileFeaturesList: TileFeaturesListType
 
-	constructor(tilesFeaturesList?: TileFeaturesListType) {
-		this.tilesFeaturesList = tilesFeaturesList || [{
-			name: `SPAWNER`,
-			isActive: true,
-			action: (params: any): any => `any`, // To do: rework
-		}]
+	constructor(tileFeaturesList?: TileFeaturesListType) {
+		this.tileFeaturesList = tileFeaturesList || []
 	}
 
 	setFeatures(tileFeaturesList: TileFeaturesListType): void {
-		this.tilesFeaturesList = tileFeaturesList
+		this.tileFeaturesList = tileFeaturesList
 	}
 
 	getFeatures(): TileFeaturesListType {
-		return this.tilesFeaturesList
+		return this.tileFeaturesList
 	}
 
 	addFeature(tileFeature: TileFeatureType): void {
-		this.tilesFeaturesList.push(tileFeature)
+		this.tileFeaturesList.push(tileFeature)
 	}
 
 	activateFeature(featureName: FeatureNameType, isActive?: boolean): void {
-		const index = this.tilesFeaturesList.findIndex((feature) => feature.name === featureName)
+		const index = this.tileFeaturesList.findIndex((feature) => feature.name === featureName)
     
-		this.tilesFeaturesList[index].isActive = isActive ?? !this.tilesFeaturesList[index].isActive
+		this.tileFeaturesList[index].isActive = isActive ?? !this.tileFeaturesList[index].isActive
 	}
   
 	toggleAllFeatures(isActive: boolean): void {
-		this.tilesFeaturesList.forEach((feature): void => {
+		this.tileFeaturesList.forEach((feature): void => {
 			feature.isActive = isActive
 		})
+	}
+
+	isNormalTile(): boolean {
+		return !!this.tileFeaturesList.length
 	}
 }
 

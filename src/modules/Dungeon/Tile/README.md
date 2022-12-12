@@ -42,3 +42,5 @@ Adds a feature to the list
 Sets an existing feature from the list as active or inactive. If the `isActive` parameter isn't given, it will toggle it.
 ### Toggle all features (`Tile.toggleAllFeatures(isActive: <boolean>)`)
 Sets all features as inactive
+### Is normal type (`Tile.isNormalTile() => boolean`)
+Returns true if the tile has no features
