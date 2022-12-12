@@ -19,6 +19,10 @@ class Tile {
 		this.tileFeaturesList.push(tileFeature)
 	}
 
+	removeAllFeatures(): void {
+		this.setFeatures([])
+	}
+
 	activateFeature(featureName: FeatureNameType, isActive?: boolean): void {
 		const index = this.tileFeaturesList.findIndex((feature) => feature.name === featureName)
     
@@ -32,7 +36,7 @@ class Tile {
 	}
 
 	isNormalTile(): boolean {
-		return !!this.tileFeaturesList.length
+		return !!this.getFeatures().length
 	}
 }
 

@@ -38,6 +38,8 @@ Sets the feature list of a tile
 Gets the feature list of a tile
 ### Add feature (`Tile.addFeature(<TileFeatureType>) => void`)
 Adds a feature to the list
+### Remove all features (`Tile.removeAllFeatures() => void`)
+Removes all features from the tile features list
 ### Activate feature (`Tile.activateFeature(featureName: <FeatureNameType>, isActive?: boolean) => void`)
 Sets an existing feature from the list as active or inactive. If the `isActive` parameter isn't given, it will toggle it.
 ### Toggle all features (`Tile.toggleAllFeatures(isActive: <boolean>)`)
