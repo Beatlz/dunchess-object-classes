@@ -27,7 +27,7 @@ The `Tile()` object can receive one optional parameter with type `TileFeaturesTy
 ```
 import Tile from '@modules/Dungeon/Tile/Tile'
 
-const tile = new Tile(<TileFeaturesType?>)
+const tile = new Tile(<TileFeaturesListType?>)
 ```
 ## Properties
 ### Features (`<TileFeaturesListType>Tile.features`)
@@ -40,3 +40,5 @@ Gets the feature list of a tile
 Adds a feature to the list
 ### Activate feature (`Tile.activateFeature(featureName: <FeatureNameType>, isActive?: boolean) => void`)
 Sets an existing feature from the list as active or inactive. If the `isActive` parameter isn't given, it will toggle it.
+### Toggle all features (`Tile.toggleAllFeatures(isActive: <boolean>)`)
+Sets all features as inactive
