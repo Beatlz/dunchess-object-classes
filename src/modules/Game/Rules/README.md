@@ -1,5 +1,5 @@
 # Rules object/dictionary
-Rules() is a class object that's constructed from the rules `CONSTANTS` file. It defines the way the API is to be used to instantiate a new `Game()`. There are several things that we can modify in a game, as well as a set of fundamentals that Dunchess has. The modifiables are:
+`Rules()` is a class object that's constructed from the rules `CONSTANTS` file. It defines the way the API is to be used to instantiate a new `Game()`. There are several things that we can modify in a game, as well as a set of fundamentals that Dunchess has. The modifiables are:
 
 1. Dungeon layout
 2. Tiles/squares (spawners, frozen squares, etc.)
@@ -26,6 +26,8 @@ import { setRule } from "@/types/RulesType"
 
 Dunchess.setRules({ ...rulesPreset, players: setRule(4, true) })
 ```
+Or ...
+`Dunchess.setRules({ ...rulesPreset, players: { value: 4, modifiable: true } })`
 ## The `RuleType` interface
 This type refers to a single rule, not to be confused with `RulesType`, which is basically the parent of `RuleType`. This interface contains two properties: `ReturnType<typeof setRule<number>>value` and `<boolean>modifiable`
 
