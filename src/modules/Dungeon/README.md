@@ -4,6 +4,19 @@ Allows us to add a new dungeon to our Dunchess game.
 ### Coords
 Coordinates for the dungeon layout
 `interface coords { x: number, y: number }`
+### TileType
+```
+enum featuresList {
+  TELEPORT,
+  FREEZE,
+  LADDER,
+  SPAWNER,
+  ARMOR,
+  ADD_MOVE
+}
+
+type FeatureNameType = keyof typeof featuresList
+```
 ### DungeonSquareType
 Square underlying properties (before they hold any entities). Used to instantiate the layout.
 ```
@@ -11,7 +24,8 @@ interface DungeonSquareType {
   x: number,
   y: number,
   color: 'LIGHT' | 'DARK',
-  isActive: boolean
+  isActive: boolean,
+  tile?: TileType
 }
 ```
 ### DungeonLayoutType
@@ -40,3 +54,11 @@ Returns the layout of the dungeon
 Sets a specific square for the dungeon. Returns an error if the type is incorrect or the square coords `{ x: number, y: number }` are out of range.
 ### Square getter (`Dungeon.getSquare(<CoordsType>) => <DungeonSquareType> | error`)
 Returns the state of the square in a set of given coords or returns an error if the coords are out of range.
+### Tile setter (`Dungeon.setTile(<CoordsType>, <TileType?>) => void | error`)
+Sets a tile in a square given the coords. If no second argument is given, it'll simply instantiate an empty `Tile()`.
+
+Throws an `error` if the coords are out of range.
+### Square activation (`Dungeon.activateSquare(<CoordsType>, <TileType?>) => void | error`)
+Sets a square's `isActive` property as `true`. If a second argument `<TileType>tile` is passed, it will run `Dungeon.setTile(<CoordsType>)` with that parameter. 
+
+Throws an error if the square coords are out of range.
