@@ -18,6 +18,7 @@ export type FeatureNameType = keyof typeof featuresList
 
 export interface TileFeatureType {
   name: FeatureNameType
+  isActive: boolean
   action: (params: any) => any // To do: rework
 }
 
