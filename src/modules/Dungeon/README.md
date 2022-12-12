@@ -1,18 +1,22 @@
 # The `Dungeon()` class
 Allows us to add a new dungeon to our Dunchess game.
 ## Types
+### Coords
+Coordinates for the dungeon layout
+`interface coords { x: number, y: number }`
+### DungeonSquareType
+Square underlying properties (before they hold any entities). Used to instantiate the layout.
 ```
-interface coords { x: number, y: number }
-
 interface DungeonSquareType {
   x: number,
   y: number,
   color: 'LIGHT' | 'DARK',
   isActive: boolean
 }
-
-type DungeonLayoutType = DungeonSquareType[]
 ```
+### DungeonLayoutType
+A list (array) of dungeon squares
+`type DungeonLayoutType = DungeonSquareType[]`
 ## Instantiation
 Needs one parameter. It can be an already set layout or an integer. If an integer N is passed, it will initialize an empty layout of N x N.
 ```
