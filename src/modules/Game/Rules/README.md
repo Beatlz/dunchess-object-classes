@@ -10,12 +10,12 @@
 7. End of game rules
 8. Fog of war
 
-So, basically, what `Dunchess.setRules(<RulesType>rules)` does is modify all the defaults from the list.
+So, basically, what `Rules.setRules(<RulesType>rules)` does is modify all the defaults from the list.
 
 ## Modify some rules of an existing preset
 We can also use a preset but change some of the rules within it (the order of the destructuring matters):
 
-`Dunchess.setRules({ ...rulesPreset, ...customRules })`
+`Rules.setRules({ ...rulesPreset, ...customRules })`
 
 ## Modify one or more rules of an existing preset
 We can modify just some rules of an existing preset too.
@@ -23,11 +23,20 @@ We can modify just some rules of an existing preset too.
 ### Example: change the max number of players
 ```
 import { setRule } from "@/types/RulesType"
+import { somePresetRules } from "@modules/Game/Rules/Presets"
+import Rules from "@modules/Game/Rules/Rules"
 
-Dunchess.setRules({ ...rulesPreset, players: setRule(4, true) })
+const rules = new Rules(somePresetRules)
+
+rules.setRules({ ...somePresetRules, players: setRule(4, true) })
 ```
+You can skip the second step where you set rules and instantiate like that from the beginning
+`const rules = new Rules({ ...somePresetRules, players: setRule(4, true) })`
 Or ...
-`Dunchess.setRules({ ...rulesPreset, players: { value: 4, modifiable: true } })`
+`Rules.setRules({ ...somePresetRules, players: { value: 4, modifiable: true } })`
+
+
+Since the rule `Rules.rules.players` is defined in the `RulesTypes` as `players: ReturnType<typeof setRule<PlayerType[]>>`, the program understands that 
 ## The `RuleType` interface
 This type refers to a single rule, not to be confused with `RulesType`, which is basically the parent of `RuleType`. This interface contains two properties: `ReturnType<typeof setRule<number>>value` and `<boolean>modifiable`
 
