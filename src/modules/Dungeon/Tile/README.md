@@ -23,15 +23,16 @@ interface TileFeatureType {
 ### Features List
 `type TileFeaturesListType = TileFeature[]`
 ## Instantiation
-The `Tile()` object can receive one optional parameter with type `TileFeaturesType`. If no arguments are passed, it will be instantiated as a usable empty tile.
+The `Tile()` object can receive parameters `<TileFeaturesListType>TileFeaturesList? <boolean>isActive?`. If no arguments are passed, it will be instantiated as a usable empty active tile.
 ```
 import Tile from '@modules/Dungeon/Tile/Tile'
 
-const tile = new Tile(<TileFeaturesListType?>)
+const tile = new Tile(<TileFeaturesListType>tileFeaturesList, <boolean>isActive)
 ```
 ## Properties
 ### Features (`<TileFeaturesListType>Tile.features`)
 ## Methods
+### Active setter (`Tile.setIsActive(<boolean>isActive) => void`)
 ### Features setter (`Tile.setFeatures(<TileFeaturesListType>) => void`)
 Sets the feature list of a tile
 ### Features getter (`Tile.getFeatures() => <TileFeaturesListType>`)

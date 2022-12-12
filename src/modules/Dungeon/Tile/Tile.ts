@@ -1,10 +1,18 @@
 import type { FeatureNameType, TileFeatureType, TileFeaturesListType } from "@/types/TileType"
 
 class Tile {
+	isActive: boolean
+
 	tileFeaturesList: TileFeaturesListType
 
-	constructor(tileFeaturesList?: TileFeaturesListType) {
+	constructor(tileFeaturesList?: TileFeaturesListType, isActive?: boolean) {
 		this.tileFeaturesList = tileFeaturesList || []
+
+		this.isActive = isActive ?? true
+	}
+
+	setIsActive(isActive: boolean) {
+		this.isActive = isActive
 	}
 
 	setFeatures(tileFeaturesList: TileFeaturesListType): void {
@@ -41,3 +49,5 @@ class Tile {
 }
 
 export default Tile
+
+export type TileType = typeof Tile
