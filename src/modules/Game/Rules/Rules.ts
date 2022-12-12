@@ -1,7 +1,7 @@
 import type { RulesType } from "@/types/RulesType"
 
 class Rules {
-	public rules: RulesType
+	private rules: RulesType
   
 	constructor(rules: RulesType) {
 		this.rules = rules
