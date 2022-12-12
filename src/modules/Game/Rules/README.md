@@ -16,3 +16,15 @@ So, basically, what `Dunchess.setRules(<RulesType>rules)` does is modify all the
 We can also use a preset but change some of the rules within it (the order of the destructuring matters):
 
 `Dunchess.setRules({ ...rulesPreset, ...customRules })`
+
+## Modify one or more rules of an existing preset
+We can modify just some rules of an existing preset too.
+
+### Example: change the max number of players
+```
+import { setRule } from "@/types/RulesType"
+
+Dunchess.setRules({ ...rulesPreset, players: setRule(4, true) })
+```
+
+The `<T>setRule(value: T, modifiable: boolean) => RuleType`
