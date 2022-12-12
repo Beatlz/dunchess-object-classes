@@ -1,4 +1,4 @@
-import { DungeonType } from "./DungeonType"
+import type { DungeonType } from "./DungeonType"
 
 export const enum rulesPresetNames {
   DUNCHESS_STANDARD,

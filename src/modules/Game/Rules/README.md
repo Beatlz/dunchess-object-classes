@@ -26,5 +26,23 @@ import { setRule } from "@/types/RulesType"
 
 Dunchess.setRules({ ...rulesPreset, players: setRule(4, true) })
 ```
+## The `RuleType` interface
+This type refers to a single rule, not to be confused with `RulesType`, which is basically the parent of `RuleType`. This interface contains two properties: `ReturnType<typeof setRule<number>>value` and `<boolean>modifiable`
 
-The `<T>setRule(value: T, modifiable: boolean) => RuleType`
+### How to set the type of `value` for a rule? Example: players rule
+In `@/types/RulesType.ts`, first import the type of the rule you need (in case it's a custom type/interface)
+```
+import PlayerType from "./PlayerType"
+
+interface RulesType {
+  ...
+  players: ReturnType<typeof setRule<PlayerType[]>>
+  ...
+}
+
+// (property) RulesType.players: {
+//     value: PlayerType[];
+//     modifiable: boolean;
+// }
+```
+The `modifiable` property is taken care of by `function setRule()`. The `value` property type has to be passed down as a type argument for this function.
