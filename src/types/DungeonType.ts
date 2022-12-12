@@ -1,8 +1,10 @@
 import CoordsType from "./CoordsType"
+import { TileType, TileColorType } from "./TileType"
 
 export interface DungeonSquareType extends CoordsType {
-  color: `LIGHT` | `DARK`
+  color: TileColorType
   isActive: boolean
+  tile?: TileType
 }
 
-export type DungeonType = DungeonSquareType[]
+export type DungeonLayoutType = DungeonSquareType[]
