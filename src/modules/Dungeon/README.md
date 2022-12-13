@@ -44,6 +44,8 @@ Stores the linear dimension of the dungeons (all dungeons are N x N).
 ### Layout (`Dungeon.layout | <DungeonLayoutType>`)
 Stores the location and color of each square.
 ## Methods
+### Create layout (`Dungeon.createLayout(<number>) => DungeonLayoutType`)
+Creates an empty layout for a dungeon given a size number
 ### Size getter (`Dungeon.getSize() => number`)
 Returns the size of the Dungeon side
 ### Layout setter (`Dugeon.setLayout(<DungeonLayoutType>) => void | error`)
