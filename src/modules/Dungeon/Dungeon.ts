@@ -54,7 +54,11 @@ class Dungeon {
 		return Math.sqrt(this.dungeonLayout.length)
 	}
 
-	setLayout(dungeonLayout: DungeonLayoutType) {
+	getLayout(): DungeonLayoutType {
+		return this.dungeonLayout
+	}
+
+	setLayout(dungeonLayout: DungeonLayoutType): void {
 		this.dungeonLayout = dungeonLayout
 	}
 }
