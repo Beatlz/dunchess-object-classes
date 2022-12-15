@@ -58,8 +58,52 @@ class Dungeon {
 		return this.dungeonLayout
 	}
 
+	getSquare(coords: CoordsType): DungeonSquareType | Error {
+		const { x, y } = coords
+
+		if (x > this.getDungeonSize() || y > this.getDungeonSize()) {
+			const err = new TypeError(`Coords [${x}, ${y}] are out of range`)
+
+			return err
+		}
+
+		const squareIndex = this.dungeonLayout.findIndex((square) => {
+			return x === square.x && y === square.y
+		})
+
+		if (!squareIndex) {
+			const err = new TypeError(`Coords [${x}, ${y}] not found`)
+
+			return err
+		}
+
+		return this.dungeonLayout[squareIndex]
+	}
+
 	setLayout(dungeonLayout: DungeonLayoutType): void {
 		this.dungeonLayout = dungeonLayout
+	}
+
+	setSquare(square: DungeonSquareType): void | Error {
+		const { x, y } = square
+
+		if (x > this.getDungeonSize() || y > this.getDungeonSize()) {
+			const err = new TypeError(`Coords [${x}, ${y}] are out of range`)
+
+			return err
+		}
+
+		const squareIndex = this.dungeonLayout.findIndex((square) => {
+			return x === square.x && y === square.y
+		})
+
+		if (squareIndex) {
+			this.dungeonLayout[squareIndex] = square
+
+			return
+		}
+
+		this.dungeonLayout.push(square)
 	}
 }
 
