@@ -49,6 +49,10 @@ class Dungeon {
 
 		return layout
 	}
+
+	getDungeonSize(): number {
+		return Math.sqrt(this.dungeonLayout.length)
+	}
 }
 
 export default Dungeon
