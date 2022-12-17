@@ -1,7 +1,7 @@
 import type CoordsType from "@/types/CoordsType"
 import type { DungeonSquareType, DungeonLayoutType } from "@/types/DungeonType"
 
-import Tile from "./Tile/Tile"
+import type { TileType } from "@/types/TileType"
 import { squareColors, DUNGEON_SIZE } from "@/types/DungeonType"
 
 const isEven = (num: number): boolean => !(num % 2)
@@ -48,6 +48,12 @@ class Dungeon {
 		}
 
 		return layout
+	}
+
+	activateSquare(coords: CoordsType): void | Error {
+		const square = this.getSquare(coords)
+
+		
 	}
 
 	getDungeonSize(): number {
@@ -104,6 +110,14 @@ class Dungeon {
 		}
 
 		this.dungeonLayout.push(square)
+	}
+
+	setTile(coords: CoordsType, tile: TileType): void | Error {
+		const square = this.getSquare(coords)
+
+		if (!square) return
+
+		(<DungeonSquareType>square).tile! = tile
 	}
 }
 
