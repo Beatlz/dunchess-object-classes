@@ -53,7 +53,9 @@ class Dungeon {
 	activateSquare(coords: CoordsType): void | Error {
 		const square = this.getSquare(coords)
 
-		
+		if (!square) return
+
+		(<DungeonSquareType>square).isActive = true
 	}
 
 	getDungeonSize(): number {
@@ -117,7 +119,7 @@ class Dungeon {
 
 		if (!square) return
 
-		(<DungeonSquareType>square).tile! = tile
+		(<DungeonSquareType>square).tile = tile
 	}
 }
 
