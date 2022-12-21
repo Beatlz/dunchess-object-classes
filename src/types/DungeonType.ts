@@ -16,4 +16,11 @@ export interface DungeonSquareType extends CoordsType {
   tile?: TileType
 }
 
-export type DungeonLayoutType = DungeonSquareType[]
+export interface DungeonLayoutWeakMapType <K extends CoordsType, V extends DungeonSquareType> {
+  delete(key: K): boolean;
+  get(key: K): V | undefined;
+  has(key: K): boolean;
+  set(key: K, value: V): this;
+}
+
+export type DungeonLayoutType = DungeonLayoutWeakMapType<CoordsType, DungeonSquareType>
