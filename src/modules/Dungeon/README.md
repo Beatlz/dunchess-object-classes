@@ -30,7 +30,12 @@ interface DungeonSquareType {
 ```
 ### DungeonLayoutType
 A list (array) of dungeon squares
+
 `type DungeonLayoutType = DungeonSquareType[]`
+### LayoutType
+A `Map Object` containing the square values (`<SquareType>`)
+
+`LayoutType<CoordsType, DungeonSquareType>`
 ## Instantiation
 Needs one parameter. It can be an already set layout or an integer. If an integer N is passed, it will initialize an empty layout of N x N.
 ```
