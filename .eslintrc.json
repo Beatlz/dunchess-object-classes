@@ -17,10 +17,6 @@
 	],
 	"rules": {
 		"indent": [2, "tab"],
-		"linebreak-style": [
-			"error",
-			"windows"
-		],
 		"quotes": [
 			"error",
 			"backtick"

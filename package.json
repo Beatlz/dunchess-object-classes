@@ -9,7 +9,8 @@
     "@utility": "dist/utility/"
   },
   "devDependencies": {
-    "@types/node": "^18.7.14",
+    "@types/node": "^18.11.17",
+    "@typescript-eslint/eslint-plugin": "^5.47.0",
     "eslint": "^8.10.0"
   },
   "dependencies": {
