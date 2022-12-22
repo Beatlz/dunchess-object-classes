@@ -1,5 +1,6 @@
 import CoordsType from "@/types/CoordsType"
-import { GetMovesType, MovesType } from "@/types/MovesType"
+
+import type { GetMovesType, MovesType } from "@/types/MovesType"
 
 class Move {
 	moves: GetMovesType[]
