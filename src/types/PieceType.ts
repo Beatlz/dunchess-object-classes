@@ -1,15 +1,15 @@
 export enum pieceNames {
-  PAWN = `PAWN`,
-  ROOK =`ROOK`,
-  KNIGHT = `KNIGHT`,
-  BISHOP = `BISHOP`,
-  QUEEN = `QUEEN`,
-  KING = `KING`
+  PAWN,
+  ROOK,
+  KNIGHT,
+  BISHOP,
+  QUEEN,
+  KING,
 }
 
 export type PieceNameType = keyof typeof pieceNames
 
 export interface PieceInitOptionsType {
-  remainingLives: number
-  pieceType: PieceNameType
+  lives: number
+  name: PieceNameType
 }
