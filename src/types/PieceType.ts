@@ -18,13 +18,13 @@ export enum moveNames {
 
 export enum itemNames {
   TELEPORTER,
-  FREEZEGUN,
   COSTUME,
-  LASSO,
 }
 
 export enum buffNames {
   HUNGER,
+  SPEED,
+  ARMOR,
 }
 
 export enum debuffNames {

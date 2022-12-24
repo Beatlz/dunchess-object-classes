@@ -2,6 +2,7 @@
 `Piece()` is a super class that gets extended by a `PieceType` class. It holds properties and methods that all pieces should have.
 ## Constructor (`new Piece(<PieceNameType> | <PieceDescriptionType>)`)
 To instantiate a `Piece()`, we need to provide either a `<PieceType>`, which is either `<PieceName>` or a `<PieceDescription>`.
+
 ### Example with piece name
 ```
 const knight = new Piece('KNIGHT')
@@ -16,13 +17,17 @@ const chancellor = new Piece({
   moves: [knightMove, rookMove]
 })
 ```
+
 ## Status
 Status are functions that change the default properties of a `Piece()` for a certain amount of time / moves (this includes indefinitely).
+
 ### Items
 Class that has the description as a function that tells how to affect a piece.
 ### Buffs / debuffs
 List of functions that describe how a piece properties and methods are affected
+
 ## Types
+
 ### Buff type (same for debuffs)
 ```
 interface BuffType {
@@ -43,6 +48,7 @@ interface PieceDescription {
 ```
 ## Properties
 The properties of a `Piece()` are the same as the attributes from a `PieceDescription`
+
 ### Lives (`<number? = 1>Piece.remainingLives`)
 Number with the total remaining lives of a piece
 ### Buffs (`<BuffType[]? = []>Piece.buffs`)
@@ -51,7 +57,9 @@ List with all buffs affecting a piece
 List with all debuffs affecting a piece
 ### Inventory (`<ItemType[]? = []>Piece.inventory`)
 List with all the items a piece is holding
+
 ## Methods
+
 ### Set lives (`Piece.setLives(<number>) => void`)
 Sets total lives of a piece given an integer
 ### Get lives (`Piece.getLives() => number`)
