@@ -1,4 +1,5 @@
-import Dungeon from "@modules/Dungeon/Dungeon"
+import { DungeonLayoutType, DungeonSquareType } from "./DungeonType"
+import { PieceType } from "./PieceType"
 
 export const enum rulesPresetNames {
   DUNCHESS_STANDARD,
@@ -14,12 +15,10 @@ export const setRule: SetRuleType = <T>(value: T, modifiable: boolean) => {
 }
 
 export interface RulesType {
-  dungeonSize: ReturnType<typeof setRule<number>>
   players: ReturnType<typeof setRule<PlayerType[]>>
   playersCanJoin: ReturnType<typeof setRule<boolean>>
-  dungeon: ReturnType<typeof setRule<DungeonType>>
-  squares: ReturnType<typeof setRule<SquareType[]>>
+  dungeonLayout: ReturnType<typeof setRule<DungeonLayoutType>>
+  squares: ReturnType<typeof setRule<DungeonSquareType[]>>
   pieces: ReturnType<typeof setRule<PieceType[]>>
-  powerUps: ReturnType<typeof setRule<PowerUpType[]>>
   movesPerTurn: ReturnType<typeof setRule<number>>
 }

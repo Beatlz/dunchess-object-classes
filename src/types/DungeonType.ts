@@ -1,5 +1,36 @@
 import CoordsType from "./CoordsType"
-import { TileType } from "./TileType"
+
+export enum tileColor {
+  LIGHT,
+  DARK
+}
+
+export enum featuresList {
+  TELEPORT,
+  FREEZE,
+  LADDER,
+  SPAWNER,
+  ARMOR,
+  ADD_MOVE
+}
+
+export type TileColorType = keyof typeof tileColor
+
+export type FeatureNameType = keyof typeof featuresList
+
+export interface TileFeatureType {
+  name: FeatureNameType
+  isActive: boolean
+  action: (params: any) => any // To do: rework
+}
+
+export type TileFeaturesListType = TileFeatureType[]
+
+export interface TileType {
+  isActive: boolean
+  features: TileFeaturesListType 
+}
+
 
 export const squareColors: { [key: string]: string } = {
 	LIGHT: `LIGHT`,
@@ -25,4 +56,4 @@ export interface DungeonLayoutMapType <K extends CoordsType, V extends DungeonSq
   forEach(callbackfn: (value: V, key: K, map: Map<K, V>) => void, thisArg?: any): void;
 }
 
-export type DungeonLayoutType = DungeonLayoutMapType<CoordsType, DungeonSquareType>
+export type DungeonLayoutType = DungeonLayoutMapType<CoordsType, DungeonSquareType> | DungeonNameType

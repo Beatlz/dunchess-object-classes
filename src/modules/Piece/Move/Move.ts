@@ -1,5 +1,5 @@
 import CoordsType from "@/types/CoordsType"
-import { GetMovesType, MovesType } from "@/types/MovesType"
+import { GetMovesType, MoveType } from "@/types/PieceType"
 
 class Move {
 	moves: GetMovesType[]
@@ -8,7 +8,7 @@ class Move {
 		this.moves = moves
 	}
 
-	getPossibleSquares(initialSquare: CoordsType): MovesType {
+	getPossibleSquares(initialSquare: CoordsType): MoveType {
 		return this.moves.map((move) => {
 			return move(initialSquare)
 		}).flat()

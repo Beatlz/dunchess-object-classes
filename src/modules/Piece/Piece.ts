@@ -1,20 +1,24 @@
 class Piece {
-	public remainingLives = 1
+	public lives = 1
 
-	setRemainingLives(remainingLives: number) {
-		this.remainingLives = remainingLives
+	constructor(lives?: number) {
+		if (lives) this.setLives(lives)
 	}
 
-	kill() {
-		this.setRemainingLives(0)
+	setLives(lives: number): void {
+		this.lives = lives
 	}
 
-	revive(remainingLives = 1) {
-		this.setRemainingLives(remainingLives)
+	kill(): void {
+		this.setLives(0)
+	}
+
+	revive(remainingLives = 1): void {
+		this.setLives(remainingLives)
 	}
 
 	isAlive(): boolean {
-		return !!this.remainingLives
+		return !!this.lives
 	}
 }
 
