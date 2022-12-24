@@ -56,4 +56,4 @@ export interface DungeonLayoutMapType <K extends CoordsType, V extends DungeonSq
   forEach(callbackfn: (value: V, key: K, map: Map<K, V>) => void, thisArg?: any): void;
 }
 
-export type DungeonLayoutType = DungeonLayoutMapType<CoordsType, DungeonSquareType>
+export type DungeonLayoutType = DungeonLayoutMapType<CoordsType, DungeonSquareType> | DungeonNameType

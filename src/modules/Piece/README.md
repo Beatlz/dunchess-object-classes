@@ -1,7 +1,7 @@
 # Piece object class
 `Piece()` is a super class that gets extended by a `PieceType` class. It holds properties and methods that all pieces should have.
 ## Constructor (`new Piece(<PieceNameType> | <PieceDescriptionType>)`)
-To instantiate a `Piece()`, we need to provide either a `<PieceName>` or a `<PieceDescription>`
+To instantiate a `Piece()`, we need to provide either a `<PieceType>`, which is either `<PieceName>` or a `<PieceDescription>`.
 ### Example with piece name
 ```
 const knight = new Piece('KNIGHT')
