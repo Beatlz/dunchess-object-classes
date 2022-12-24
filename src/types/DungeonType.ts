@@ -1,5 +1,14 @@
 import CoordsType from "./CoordsType"
 
+export enum dungeonList {
+  TUTORIAL_1,
+  TUTORIAL_2,
+  TUTORIAL_3,
+  EIXAMPCHESS,
+  SACRILEGE,
+  LASTLEVEL,
+}
+
 export enum tileColor {
   LIGHT,
   DARK
@@ -13,6 +22,8 @@ export enum featuresList {
   ARMOR,
   ADD_MOVE
 }
+
+export type DungeonNameType = keyof typeof dungeonList
 
 export type TileColorType = keyof typeof tileColor
 
@@ -56,4 +67,4 @@ export interface DungeonLayoutMapType <K extends CoordsType, V extends DungeonSq
   forEach(callbackfn: (value: V, key: K, map: Map<K, V>) => void, thisArg?: any): void;
 }
 
-export type DungeonLayoutType = DungeonLayoutMapType<CoordsType, DungeonSquareType> | DungeonNameType
+export type DungeonLayoutType = DungeonLayoutMapType<CoordsType, DungeonSquareType>
