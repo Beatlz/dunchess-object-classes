@@ -21,13 +21,15 @@ export enum itemNames {
   COSTUME,
 }
 
-export enum buffNames {
+export enum pieceModifiablesValueList {
+  LIVES = `lives`,
+  MOVES = `moves`,
+}
+
+export enum statusModifierName {
   HUNGER,
   SPEED,
   ARMOR,
-}
-
-export enum debuffNames {
   SLEEP,
   STUN,
   ROOT,
@@ -39,9 +41,7 @@ export type MoveNameType = keyof typeof moveNames | PieceNameType
 
 export type itemNameType = keyof typeof itemNames
 
-export type buffNameType = keyof typeof buffNames
-
-export type debuffNameType = keyof typeof debuffNames
+export type statusModifierNameType = keyof typeof statusModifierName
 
 export type MoveType = CoordsType[]
 
@@ -52,11 +52,23 @@ export interface PieceInitOptionsType {
   name: PieceNameType
 }
 
+export type PieceModifyingFunctionType = <
+  ModifiableValueType extends pieceModifiablesValueList,
+  ParamsType
+>(modifiableValue: ModifiableValueType, params?: ParamsType) => PieceDescriptionType[ModifiableValueType]
+
+export interface PieceStatusModifierType {
+  isBuff: boolean,
+  modifyingFunction: PieceModifyingFunctionType
+}
+
 export interface PieceDescriptionType {
   lives: number
   moves: GetMovesType[]
-  inventory?: ItemType[]
-  buffs?: BuffType[]
+  // inventory?: ItemType[]
+  statusModifiers?: PieceModifyingFunctionType[]
 }
+
+export type ItemFunctionReturnType = PieceDescriptionType[keyof PieceDescriptionType];
 
 export type PieceType = PieceDescriptionType

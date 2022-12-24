@@ -41,7 +41,7 @@ interface BuffType {
 ```
 interface PieceDescription {
   lives: number
-  moves: (GetMovesType | string)[]
+  moves: GetMovesType[]
   inventory?: ItemsType[]
   buffs?: BuffType[]
 }
