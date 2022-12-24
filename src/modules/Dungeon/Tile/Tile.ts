@@ -1,4 +1,4 @@
-import type { FeatureNameType, TileFeatureType, TileFeaturesListType } from "@/types/TileType"
+import type { FeatureNameType, TileFeatureType, TileFeaturesListType } from "@/types/DungeonType"
 
 class Tile {
 	isActive: boolean
@@ -32,13 +32,13 @@ class Tile {
 	}
 
 	activateFeature(featureName: FeatureNameType, isActive?: boolean): void {
-		const index = this.tileFeaturesList.findIndex((feature) => feature.name === featureName)
+		const index = this.tileFeaturesList.findIndex((feature: TileFeatureType) => feature.name === featureName)
     
 		this.tileFeaturesList[index].isActive = isActive ?? !this.tileFeaturesList[index].isActive
 	}
   
 	toggleAllFeatures(isActive: boolean): void {
-		this.tileFeaturesList.forEach((feature): void => {
+		this.tileFeaturesList.forEach((feature: TileFeatureType): void => {
 			feature.isActive = isActive
 		})
 	}
