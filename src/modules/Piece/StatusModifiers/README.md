@@ -1,6 +1,6 @@
 # Buffs & debuffs, status modifying
 Buffs and debuffs are status modifying functions that affect a piece. To use them, we apply them on a `Piece()` instance like so:
-`Piece.setStatus(<StatusModifierType | StatusModifierName>)`
+`Piece.addStatusModifier(<StatusModifierType | StatusModifierName>)`
 ## Types
 
 ### Modifiable value
@@ -12,7 +12,7 @@ type ModifiableValueListType = 'lives' | 'moves'
 type PieceModifyingFunctionType = <
   ModifiableValueType extends PieceModifiablesValueListType,
   ParamsType
->(modifiableValue: ModifiableValueType, params?: ParamsType) => PieceDescriptionType[ModifiableValueType]
+>(modifiableValue: ModifiableValueType, params?: ParamsType) => void
 ```
 ### Status modifier
 ```
@@ -22,7 +22,11 @@ interface StatusModifierType {
 }
 ```
 ## Status modifying funciton
-This is basically a function that sets an attribute of a piece to something. This means that the function can only return something that is a value type from the `<PieceDescriptionType>`. This works because we have this Record:
+This is basically a function that sets an attribute of a piece to something. Let's say we want to add a permanent buff that gives a piece an extra life:
+
+First, we create the function.
 ```
-type PieceModifyingFunctionReturnType = PieceDescriptionType[keyof PieceDescriptionType]
+const knight = new Piece(`KNIGHT`)
+
+knight.addStatusModifier(`ONE_UP`)
 ```
