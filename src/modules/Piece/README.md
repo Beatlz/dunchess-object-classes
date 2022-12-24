@@ -30,9 +30,17 @@ interface BuffType {
   name?: BuffDebuffNameType
 }
 ```
-### Piece description
+### Item type
 
-### Piece description
+### Piece description type
+```
+interface PieceDescription {
+  lives: number
+  moves: (GetMovesType | string)[]
+  inventory?: ItemsType[]
+  buffs?: BuffType[]
+}
+```
 ## Properties
 The properties of a `Piece()` are the same as the attributes from a `PieceDescription`
 ### Lives (`<number? = 1>Piece.remainingLives`)

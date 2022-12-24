@@ -20,6 +20,5 @@ export interface RulesType {
   dungeon: ReturnType<typeof setRule<DungeonType>>
   squares: ReturnType<typeof setRule<SquareType[]>>
   pieces: ReturnType<typeof setRule<PieceType[]>>
-  powerUps: ReturnType<typeof setRule<PowerUpType[]>>
   movesPerTurn: ReturnType<typeof setRule<number>>
 }
