@@ -5,7 +5,9 @@ To instantiate a `Piece()`, we need to provide either a `<PieceType>`, which is 
 
 ### Example with piece name
 ```
-const knight = new Piece('KNIGHT')
+import { knight } from "@modules/Piece/PieceDescriptions"
+
+const knight = new Piece(knight)
 ```
 ### Example with piece description
 ```
@@ -49,6 +51,8 @@ interface PieceDescription {
 ## Properties
 The properties of a `Piece()` are the same as the attributes from a `PieceDescription`
 
+### Color (`<ColorNameType>Piece.color`)
+Color of the piece
 ### Lives (`<number? = 1>Piece.remainingLives`)
 Number with the total remaining lives of a piece
 ### Buffs (`<BuffType[]? = []>Piece.buffs`)

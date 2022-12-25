@@ -1,7 +1,7 @@
 import { DungeonLayoutType, DungeonSquareType } from "./DungeonType"
 import { PieceType } from "./PieceType"
 
-export const enum rulesPresetNames {
+export enum rulesPresetNames {
   DUNCHESS_STANDARD,
   CHESS_STANDARD,
 }

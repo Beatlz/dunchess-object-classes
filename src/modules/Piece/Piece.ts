@@ -1,8 +1,18 @@
+import type { ColorType } from "@/types/DungeonType"
+
 class Piece {
+	public color: ColorType
+	
 	public lives = 1
 
-	constructor(lives?: number) {
+	constructor(color: ColorType, lives?: number) {
+		this.color = color
+
 		if (lives) this.setLives(lives)
+	}
+
+	getColor(): ColorType {
+		return this.color
 	}
 
 	setLives(lives: number): void {

@@ -19,6 +19,7 @@ export enum moveNames {
 export enum itemNames {
   TELEPORTER,
   COSTUME,
+  WOLOLO,
 }
 
 export enum pieceModifiablesValueList {
@@ -65,7 +66,7 @@ export interface PieceStatusModifierType {
 export interface PieceDescriptionType {
   lives: number
   moves: GetMovesType[]
-  // inventory?: ItemType[]
+  // inventory?: ItemType[] ==> Not MVP
   statusModifiers?: PieceModifyingFunctionType[]
 }
 

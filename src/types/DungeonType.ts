@@ -1,5 +1,10 @@
 import CoordsType from "./CoordsType"
 
+export enum colorsList {
+  LIGHT,
+  DARK,
+}
+
 export enum dungeonList {
   TUTORIAL_1,
   TUTORIAL_2,
@@ -7,11 +12,6 @@ export enum dungeonList {
   EIXAMPCHESS,
   SACRILEGE,
   LASTLEVEL,
-}
-
-export enum tileColor {
-  LIGHT,
-  DARK
 }
 
 export enum featuresList {
@@ -23,9 +23,9 @@ export enum featuresList {
   ADD_MOVE
 }
 
-export type DungeonNameType = keyof typeof dungeonList
+export type ColorType = keyof typeof colorsList
 
-export type TileColorType = keyof typeof tileColor
+export type DungeonNameType = keyof typeof dungeonList
 
 export type FeatureNameType = keyof typeof featuresList
 
@@ -42,18 +42,10 @@ export interface TileType {
   features: TileFeaturesListType 
 }
 
-
-export const squareColors: { [key: string]: string } = {
-	LIGHT: `LIGHT`,
-	DARK: `DARK`,
-}
-
 export const DUNGEON_SIZE = 16
 
-export type SquareColorType = keyof typeof squareColors
-
 export interface DungeonSquareType extends CoordsType {
-  color: SquareColorType
+  color: ColorType
   isActive: boolean
   tile?: TileType
 }

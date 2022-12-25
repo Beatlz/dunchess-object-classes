@@ -1,7 +1,8 @@
 import type CoordsType from "@/types/CoordsType"
 import type { DungeonSquareType, DungeonLayoutType } from "@/types/DungeonType"
 
-import { squareColors, DUNGEON_SIZE } from "@/types/DungeonType"
+import { COLORS } from "@/types/constants"
+import { DUNGEON_SIZE } from "@/types/DungeonType"
 
 const isEven = (num: number): boolean => !(num % 2)
 
@@ -16,7 +17,7 @@ class Dungeon {
 		const layout: DungeonLayoutType = new Map()
 
 		const totalTiles = Math.pow(layoutSize, 2)
-		const { LIGHT, DARK } = squareColors
+		const { LIGHT, DARK } = COLORS
 		const layoutIterator = new Array(totalTiles).fill({ x: null, y: null })
 		
 		let isRightSquareLight = true
