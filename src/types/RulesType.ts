@@ -1,5 +1,5 @@
 import { DungeonLayoutType, DungeonSquareType } from "./DungeonType"
-import { PieceType } from "./PieceType"
+import { PieceDescriptionType } from "./PieceType"
 
 export enum rulesPresetNames {
   DUNCHESS_STANDARD,
@@ -15,10 +15,10 @@ export const setRule: SetRuleType = <T>(value: T, modifiable: boolean) => {
 }
 
 export interface RulesType {
-  players: ReturnType<typeof setRule<PlayerType[]>>
+  // players: ReturnType<typeof setRule<PlayerType[]>>
   playersCanJoin: ReturnType<typeof setRule<boolean>>
   dungeonLayout: ReturnType<typeof setRule<DungeonLayoutType>>
   squares: ReturnType<typeof setRule<DungeonSquareType[]>>
-  pieces: ReturnType<typeof setRule<PieceType[]>>
+  pieces: ReturnType<typeof setRule<PieceDescriptionType[]>>
   movesPerTurn: ReturnType<typeof setRule<number>>
 }

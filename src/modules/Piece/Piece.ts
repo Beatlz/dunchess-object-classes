@@ -1,14 +1,18 @@
 import type { ColorType } from "@/types/DungeonType"
+import { PieceDescriptionType, GetMovesType } from "@/types/PieceType"
 
 class Piece {
 	public color: ColorType
-	
+
+	public moves: GetMovesType[] = []
+
 	public lives = 1
 
-	constructor(color: ColorType, lives?: number) {
-		this.color = color
+	constructor(pieceDescription: PieceDescriptionType) {
+		this.color = pieceDescription.color
+		this.lives = pieceDescription.lives || 1
 
-		if (lives) this.setLives(lives)
+		if (pieceDescription.lives) this.setLives(pieceDescription.lives)
 	}
 
 	getColor(): ColorType {
