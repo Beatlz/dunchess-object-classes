@@ -1,11 +1,11 @@
 import type { PieceDescriptionType, PieceNameType } from "@/types/PieceType"
 
 import Piece from "../Piece"
+import { PIECE_BISHOP } from "@/types/constants"
 import bishopMove from "../Move/BishopMove.ts"
-import { pieceNames } from "@/types/PieceType"
 
 class Bishop extends Piece {
-	readonly name: PieceNameType = pieceNames.BISHOP
+	readonly name: PieceNameType = PIECE_BISHOP
 
 	constructor (pieceDescription: PieceDescriptionType) {
 		super(pieceDescription)

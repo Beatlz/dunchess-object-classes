@@ -1,3 +1,4 @@
+import { INIT_LIVES } from "@/types/constants"
 import type { ColorType } from "@/types/DungeonType"
 import { PieceDescriptionType, GetMovesType } from "@/types/PieceType"
 
@@ -6,11 +7,11 @@ class Piece {
 
 	public moves: GetMovesType[] = []
 
-	public lives = 1
+	public lives: number
 
 	constructor(pieceDescription: PieceDescriptionType) {
 		this.color = pieceDescription.color
-		this.lives = pieceDescription.lives || 1
+		this.lives = pieceDescription.lives || INIT_LIVES
 
 		if (pieceDescription.lives) this.setLives(pieceDescription.lives)
 	}

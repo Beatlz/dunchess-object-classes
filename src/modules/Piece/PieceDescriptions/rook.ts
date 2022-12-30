@@ -2,10 +2,10 @@ import type { PieceDescriptionType, PieceNameType } from "@/types/PieceType"
 
 import Piece from "../Piece"
 import rookMove from "../Move/RookMove.ts"
-import { pieceNames } from "@/types/PieceType"
+import { PIECE_ROOK } from "@/types/constants"
 
 class Rook extends Piece {
-	readonly name: PieceNameType = pieceNames.ROOK
+	readonly name: PieceNameType = PIECE_ROOK
 
 	constructor (pieceDescription: PieceDescriptionType) {
 		super(pieceDescription)

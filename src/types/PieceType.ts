@@ -2,12 +2,12 @@ import CoordsType from "./CoordsType"
 import { ColorType } from "./DungeonType"
 
 export enum pieceNames {
-  PAWN = `PAWN`,
-  KNIGHT = `KNIGHT`,
-  BISHOP = `BISHOP`,
-  QUEEN = `QUEEN`,
-  KING = `KING`,
-  ROOK = `ROOK`,
+  PAWN,
+  KNIGHT,
+  BISHOP,
+  QUEEN,
+  KING,
+  ROOK,
 }
 
 export enum moveNames {
@@ -71,6 +71,3 @@ export interface PieceDescriptionType {
   // inventory?: ItemType[] ==> Not MVP
   statusModifiers?: PieceModifyingFunctionType[]
 }
-
-export type ItemFunctionReturnType = PieceDescriptionType[keyof PieceDescriptionType];
-
