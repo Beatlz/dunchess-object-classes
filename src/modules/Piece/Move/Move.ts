@@ -8,9 +8,9 @@ class Move {
 		this.moves = moves
 	}
 
-	getPossibleSquares(initialSquare: CoordsType): MoveType {
+	getPossibleSquares(initialSquare: CoordsType, layoutSize: number): MoveType {
 		return this.moves.map((move) => {
-			return move(initialSquare)
+			return move(initialSquare, layoutSize)
 		}).flat()
 	}
 }

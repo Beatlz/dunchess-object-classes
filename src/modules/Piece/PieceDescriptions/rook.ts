@@ -1,7 +1,7 @@
 import type { PiecePresetDescriptionType, PieceNameType } from "@/types/PieceType"
 
 import Piece from "../Piece"
-import rookMove from "../Move/RookMove.ts"
+import rookMove from "../Move/MoveFunctions/RookMove"
 import { PIECE_ROOK } from "@/types/constants"
 
 class Rook extends Piece {

@@ -1,7 +1,7 @@
-import type { PieceNameType } from "@/types/PieceType"
+import type { PieceNameType, PiecePresetDescriptionType } from "@/types/PieceType"
 
 import Piece from "../Piece"
-import kingMove from "../Move/KingMove.ts"
+import kingMove from "../Move/MoveFunctions/KingMove"
 import { PIECE_KING } from "@/types/constants"
 
 class King extends Piece {

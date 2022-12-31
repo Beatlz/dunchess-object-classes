@@ -1,7 +1,7 @@
-import type { PieceNameType } from "@/types/PieceType"
+import type { PieceNameType, PiecePresetDescriptionType } from "@/types/PieceType"
 
 import Piece from "../Piece"
-import pawnMove from "../Move/PawnMove.ts"
+import pawnMove from "../Move/MoveFunctions/PawnMove"
 import { PIECE_PAWN } from "@/types/constants"
 
 class Pawn extends Piece {
