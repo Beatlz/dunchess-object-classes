@@ -47,7 +47,7 @@ export type statusModifierNameType = keyof typeof statusModifierName
 
 export type MoveType = CoordsType[]
 
-export type GetMovesType = (initialSquare: CoordsType) => MoveType
+export type GetMovesType = (initialSquare: CoordsType, layoutSize: number) => MoveType
 
 export interface PieceInitOptionsType {
   lives: number
@@ -66,8 +66,15 @@ export interface PieceStatusModifierType {
 
 export interface PieceDescriptionType {
   color: ColorType
+  moves: GetMovesType[]
   lives?: number
-  moves?: GetMovesType[]
+  // inventory?: ItemType[] ==> Not MVP
+  statusModifiers?: PieceModifyingFunctionType[]
+}
+
+export interface PiecePresetDescriptionType {
+  color: ColorType
+  lives?: number
   // inventory?: ItemType[] ==> Not MVP
   statusModifiers?: PieceModifyingFunctionType[]
 }

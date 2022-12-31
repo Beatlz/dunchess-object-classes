@@ -4,7 +4,7 @@ import { PieceNameType } from "./PieceType"
 // Game
 export const COLORS: { [key: string]: ColorType } = { LIGHT: `LIGHT`, DARK: `DARK` }
 
-// PIECES
+// PIECE
 // Names
 export const PIECE_ROOK: PieceNameType = `ROOK`
 export const PIECE_KNIGHT: PieceNameType = `KNIGHT`
