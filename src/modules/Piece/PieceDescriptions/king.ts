@@ -1,7 +1,7 @@
 import type { PieceNameType, PiecePresetDescriptionType } from "@/types/PieceType"
 
 import Piece from "../Piece"
-import kingMove from "../Move/MoveFunctions/KingMove"
+import kingMove from "../Moves/KingMove"
 import { PIECE_KING } from "@/types/constants"
 
 class King extends Piece {

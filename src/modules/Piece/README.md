@@ -41,11 +41,12 @@ interface BuffType {
 
 ### Piece description type
 ```
-interface PieceDescription {
-  lives: number
+interface PieceDescriptionType {
+  color: ColorType
   moves: GetMovesType[]
-  inventory?: ItemsType[]
-  buffs?: BuffType[]
+  name: string
+  lives?: number
+  statusModifiers?: PieceModifyingFunctionType[]
 }
 ```
 ## Properties
