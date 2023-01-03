@@ -1,4 +1,6 @@
 {
+  "name": "dunchess-api",
+  "version": "1.0.0",
   "_moduleAliases": {
     "...": "./",
     "@": "/dist",
