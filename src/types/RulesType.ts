@@ -8,17 +8,13 @@ export enum rulesPresetNames {
 
 export type RulesPresetNamesType = keyof typeof rulesPresetNames
 
-export type SetRuleType = <T>(value: T, modifiable: boolean) => { value: T, modifiable: boolean }
-
-export const setRule: SetRuleType = <T>(value: T, modifiable: boolean) => {
-	return { value, modifiable }
-}
+export type SetRuleType<T> = (value: T, modifiable: boolean) => { value: T, modifiable: boolean }
 
 export interface RulesType {
-  // players: ReturnType<typeof setRule<PlayerType[]>>
-  playersCanJoin: ReturnType<typeof setRule<boolean>>
-  dungeonLayout: ReturnType<typeof setRule<DungeonLayoutType>>
-  squares: ReturnType<typeof setRule<DungeonSquareType[]>>
-  pieces: ReturnType<typeof setRule<PieceDescriptionType[]>>
-  movesPerTurn: ReturnType<typeof setRule<number>>
+  // players: ReturnType<typeof setRule<PlayerType[], boolean>>
+  playersCanJoin: ReturnType<SetRuleType<boolean>>
+  dungeonLayout: ReturnType<SetRuleType<DungeonLayoutType>>
+  squares: ReturnType<SetRuleType<DungeonSquareType[]>>
+  pieces: ReturnType<SetRuleType<PieceDescriptionType[]>>
+  movesPerTurn: ReturnType<SetRuleType<number>>
 }
