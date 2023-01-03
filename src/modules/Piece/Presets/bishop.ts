@@ -2,7 +2,7 @@ import type { PieceNameType, PiecePresetDescriptionType } from "@/types/PieceTyp
 
 import Piece from "../Piece"
 import { PIECE_BISHOP } from "@/types/constants"
-import bishopMove from "../Move/MoveFunctions/BishopMove"
+import bishopMove from "../Moves/BishopMove"
 
 class Bishop extends Piece {
 	readonly name: PieceNameType = PIECE_BISHOP
