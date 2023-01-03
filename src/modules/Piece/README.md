@@ -82,3 +82,5 @@ Sets the lives of a piece to 0
 Sets the lives of a piece to a given parameter (defaults as 1)
 ### Piece is alive (`Piece.isAlive() => boolean`)
 Returns false if the piece has 0 lives left (true if opposite)
+### Get moves (`Piece.getMoves(<CoordsType>, <Tile>) => <CoordsType[]>`)
+Returns a list of the possible squares a piece can move given an initial set of coords and a Tile instance.

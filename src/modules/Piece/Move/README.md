@@ -10,23 +10,33 @@ This is a function of type `GetMovesType` that returns an array of possible squa
 
 ### The chancellor
 
-In chess, a chancellor is a special piece (not part of the standard rules) that can move like a knight and a rook. In this example we will create this new possible move by combining two existing ones
-
+In chess, a chancellor is a special piece (not part of the standard rules) that can move like a knight and a rook. In this example we will create this new possible move by combining two existing ones. This means you can take two piece functions and merge them into one.
 ```
-import { knightMove } from "@modules/Piece/Moves/knightMove"
-import { rookMove } from "@modules/Piece/Moves/rookMove"
+import { LIGHT_COLOR } from "@/types/constants"
+import knightMove from "./KnightMove"
+import rookMove from "./RookMove"
 
-import Move from "@modules/Piece/Moves/Move"
-import Piece from "@modules/Piece/Piece"
+const chancellorMove: GetMoveType = (initialSquare: CoordsType, layoutSize: number): CoordsType[] => {
+  return [...knightMove(initialSquare, layoutSize), ...rookMove(initialSquare, layoutSize)]
+}
 
-const chancellorMove = new Move([knightMove, rookMove])
-const possibleSquares = chancellorMove.getPossibleSquares(<CoordsType>) // Pass the initial square coords
-
-const chancellor = new Piece(moves: <GetMovesType[]>)
+export default chancellorMove
+```
+We can now use this new move to declare a `new Piece()` object.
+```
+const chancellor = new Piece({
+  name: 'Chancellor',
+  moves: [chancellorMove],
+  color: LIGHT_COLOR
+})
+```
+If we only want a temporary piece and not a preset that would be reused, you can skip the first part and just combine the moves in the new piece instantiation:
+```
+const chancellor = new Piece({
+  name: 'Chancellor',
+  moves: [knightMove, bishopMove],
+  color: LIGHT_COLOR
+})
 ```
 
-Instantiating a new Move:
-`new Move(baseMoves?: GetMovesType[])`
 
-The move method type:
-`Move.getPossibleSquares(<CoordsType>initialSquare): <CoordsType[]>`
