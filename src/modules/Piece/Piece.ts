@@ -5,16 +5,15 @@ import { PieceDescriptionType, GetMovesType, PieceModifyingFunctionType } from "
 
 class Piece {
 	public color: ColorType
-
 	public moves: GetMovesType[]
-
 	public lives: number
-
 	public statusModifiers: PieceModifyingFunctionType[]
+	readonly name: string
 
 	constructor(pieceDescription: PieceDescriptionType) {
 		this.color = pieceDescription.color
 		this.moves = pieceDescription.moves
+		this.name = pieceDescription.name
 		this.lives = pieceDescription.lives || INIT_LIVES
 		this.statusModifiers = pieceDescription.statusModifiers || []
 
