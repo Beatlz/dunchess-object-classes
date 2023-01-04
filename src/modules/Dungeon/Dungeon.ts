@@ -25,7 +25,7 @@ export class Dungeon {
 
 		for (let square = 0; square <= totalTiles; square++) {
 			const x = square % layoutSize
-			const y = layoutSize - Math.floor(square / layoutSize) - 1
+			const y = layoutSize - Math.floor(square / layoutSize)
 
 			if (isEven(layoutSize)) {
 				if (square % layoutSize) isRightSquareLight = !isRightSquareLight
