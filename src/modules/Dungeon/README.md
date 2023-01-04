@@ -55,8 +55,6 @@ Returns the total tiles of the dungeon. If a `<'2D?>` argument is passed down as
 Sets a layout for the dungeon given a valid Dungeon Layout or size (1D).
 ### Layout getter (`Dungeon.getLayout() => DungeonLayoutType`)
 Returns the layout of the dungeon
-### Layout entries getter (` Dungeon.getLayoutEntries() => IterableIterator<[CoordsType, DungeonSquareType]>`)
-Returns the entries for the layout map
 ### Square setter (`Dungeon.setSquare(<DungeonSquareType>) => void | error`)
 Sets a specific square for the dungeon. Returns an error if the type is incorrect or the square coords `{ x: number, y: number }` are out of range.
 ### Square getter (`Dungeon.getSquare(<CoordsType>) => <DungeonSquareType> | error`)

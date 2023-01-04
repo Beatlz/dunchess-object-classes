@@ -50,14 +50,4 @@ export interface DungeonSquareType extends CoordsType {
   tile?: TileType
 }
 
-export interface DungeonLayoutMapType <K extends CoordsType, V extends DungeonSquareType> {
-  delete(key: K): boolean
-  get(key: K): V | undefined
-  has(key: K): boolean
-  set(key: K, value: V): this
-  readonly size: number
-  forEach(callbackfn: (value: V, key: K, map: Map<K, V>) => void, thisArg?: any): void
-  entries():  IterableIterator<[K, V]>
-}
-
-export type DungeonLayoutType = DungeonLayoutMapType<CoordsType, DungeonSquareType>
+export interface DungeonLayoutType { [key: string]: DungeonSquareType }
