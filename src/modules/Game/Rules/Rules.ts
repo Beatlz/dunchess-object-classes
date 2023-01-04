@@ -1,6 +1,6 @@
-import type { RulesType } from "@/types/RulesType"
+import type { RulesType } from "../../../index"
 
-class Rules {
+export class Rules {
 	private rules: RulesType
   
 	constructor(rules: RulesType) {
@@ -15,5 +15,3 @@ class Rules {
 		this.rules = { ...this.rules, ...rules }
 	}
 }
-
-export default Rules

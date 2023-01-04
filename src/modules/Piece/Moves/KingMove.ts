@@ -1,7 +1,7 @@
-import type CoordsType from "@/types/CoordsType"
-import type { GetMovesType } from "@/types/PieceType"
+import type { CoordsType } from "../../../index"
+import type { GetMovesType } from "../../../index"
 
-const kingMove: GetMovesType = (initCoords: CoordsType, layoutSize: number): CoordsType[] => {
+export const kingMove: GetMovesType = (initCoords: CoordsType, layoutSize: number): CoordsType[] => {
 	const { x, y } = initCoords
 	const possibleMoves = [
 		{ x: x - 1, y: y + 1 },
@@ -23,5 +23,3 @@ const kingMove: GetMovesType = (initCoords: CoordsType, layoutSize: number): Coo
       && possibleMove.y < layoutSize
 	})
 }
-
-export default kingMove

@@ -1,12 +1,12 @@
-import type CoordsType from "@/types/CoordsType"
-import type { DungeonSquareType, DungeonLayoutType } from "@/types/DungeonType"
+import type { CoordsType } from "../../index"
+import type { DungeonSquareType, DungeonLayoutType } from "../../index"
 
-import { COLORS } from "@/types/constants"
-import { DUNGEON_SIZE } from "@/types/DungeonType"
+import { COLORS } from "../../index"
+import { DUNGEON_SIZE } from "../../index"
 
-const isEven = (num: number): boolean => !(num % 2)
+export const isEven = (num: number): boolean => !(num % 2)
 
-class Dungeon {
+export class Dungeon {
 	#layout: DungeonLayoutType = new Map()
 
 	constructor (layout?: DungeonLayoutType | number) {
@@ -86,5 +86,3 @@ class Dungeon {
 		}
 	}
 }
-
-export default Dungeon

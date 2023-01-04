@@ -1,15 +1,13 @@
-import type { PieceNameType, PiecePresetDescriptionType } from "@/types/PieceType"
+import type { PieceNameType, PiecePresetDescriptionType } from "../../../index"
 
-import Piece from "../Piece"
-import pawnMove from "../Moves/PawnMove"
-import { PIECE_PAWN } from "@/types/constants"
+import { Piece } from "../../../index"
+import { pawnMove } from "../../../index"
+import { PIECE_PAWN } from "../../../index"
 
-class Pawn extends Piece {
+export class Pawn extends Piece {
 	readonly name: PieceNameType = PIECE_PAWN
 
 	constructor (pieceDescription: PiecePresetDescriptionType) {
 		super({ ...pieceDescription, moves: [pawnMove] })
 	}
 }
-
-export default Pawn

@@ -1,10 +1,8 @@
-import type CoordsType from "@/types/CoordsType"
-import type { GetMovesType } from "@/types/PieceType"
+import type { CoordsType } from "../../../index"
+import type { GetMovesType } from "../../../index"
 
-import { verticalMove, horizontalMove } from "./GenericMoves"
+import { verticalMove, horizontalMove } from "../../../index"
 
-const rookMove: GetMovesType = (initialSquare: CoordsType, layoutSize: number): CoordsType[] => {
+export const rookMove: GetMovesType = (initialSquare: CoordsType, layoutSize: number): CoordsType[] => {
 	return [...verticalMove(initialSquare, layoutSize), ...horizontalMove(initialSquare, layoutSize)]
 } 
-
-export default rookMove

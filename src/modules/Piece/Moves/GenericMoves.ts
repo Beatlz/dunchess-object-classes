@@ -1,5 +1,5 @@
-import type CoordsType from "@/types/CoordsType"
-import type { GetMovesType } from "@/types/PieceType"
+import type { CoordsType } from "../../../index"
+import type { GetMovesType } from "../../../index"
 
 export const horizontalMove: GetMovesType = (
 	initialSquare: CoordsType,

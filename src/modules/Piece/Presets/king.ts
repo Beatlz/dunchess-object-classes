@@ -1,15 +1,13 @@
-import type { PieceNameType, PiecePresetDescriptionType } from "@/types/PieceType"
+import type { PieceNameType, PiecePresetDescriptionType } from "../../../index"
 
-import Piece from "../Piece"
-import kingMove from "../Moves/KingMove"
-import { PIECE_KING } from "@/types/constants"
+import { Piece } from "../../../index"
+import { kingMove } from "../../../index"
+import { PIECE_KING } from "../../../index"
 
-class King extends Piece {
+export class King extends Piece {
 	readonly name: PieceNameType = PIECE_KING
 
 	constructor (pieceDescription: PiecePresetDescriptionType) {
 		super({ ...pieceDescription, moves: [kingMove] })
 	}
 }
-
-export default King
