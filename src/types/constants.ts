@@ -1,5 +1,5 @@
-import { ColorType } from "./DungeonType"
-import { PieceNameType } from "./PieceType"
+import { ColorType } from ".."
+import { PieceNameType } from ".."
 
 // Game
 export const COLORS: { [key: string]: ColorType } = { LIGHT: `LIGHT`, DARK: `DARK` }

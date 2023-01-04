@@ -1,9 +1,7 @@
-import type CoordsType from "@/types/CoordsType"
-import type { GetMovesType } from "@/types/PieceType"
-import { diagonalMove } from "./GenericMoves"
+import type { CoordsType } from "../../.."
+import type { GetMovesType } from "../../.."
+import { diagonalMove } from "../../.."
 
-const bishopMove: GetMovesType = (initCoords: CoordsType, layoutSize: number): CoordsType[] => {
+export const bishopMove: GetMovesType = (initCoords: CoordsType, layoutSize: number): CoordsType[] => {
 	return diagonalMove(initCoords, layoutSize)
 }
-
-export default bishopMove

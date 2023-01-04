@@ -1,6 +1,6 @@
-import type { FeatureNameType, TileFeatureType, TileFeaturesListType } from "@/types/DungeonType"
+import type { FeatureNameType, TileFeatureType, TileFeaturesListType } from "../../.."
 
-class Tile {
+export class Tile {
 	isActive: boolean
 
 	tileFeaturesList: TileFeaturesListType
@@ -47,7 +47,3 @@ class Tile {
 		return !!this.getFeatures().length
 	}
 }
-
-export default Tile
-
-export type TileType = typeof Tile

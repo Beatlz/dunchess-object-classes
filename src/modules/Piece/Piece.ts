@@ -1,10 +1,10 @@
-import { INIT_LIVES } from "@/types/constants"
+import { INIT_LIVES } from "../.."
 
-import type CoordsType from "@/types/CoordsType"
-import type { ColorType } from "@/types/DungeonType"
-import type { PieceDescriptionType, GetMovesType, PieceModifyingFunctionType } from "@/types/PieceType"
+import type { CoordsType } from "../.."
+import type { ColorType } from "../.."
+import type { PieceDescriptionType, GetMovesType, PieceModifyingFunctionType } from "../.."
 
-class Piece {
+export class Piece {
 	public color: ColorType
 	public moves: GetMovesType[]
 	public lives: number
@@ -55,5 +55,3 @@ class Piece {
 		return !!this.lives
 	}
 }
-
-export default Piece
