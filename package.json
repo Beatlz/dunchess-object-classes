@@ -1,6 +1,7 @@
 {
   "name": "dunchess-api",
   "version": "1.0.0",
+  "type": "module",
   "_moduleAliases": {
     "...": "./",
     "@": "/dist",
@@ -15,13 +16,26 @@
     "@types/node": "^18.11.17",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "eslint": "^8.10.0",
+    "npm-run-all": "^4.1.5",
     "rollup": "^3.9.1",
     "rollup-plugin-dts": "^5.1.0"
   },
   "dependencies": {
-    "module-alias": "^2.2.2"
+    "module-alias": "^2.2.2",
+    "tslib": "^2.4.1"
   },
   "scripts": {
-    "start": "ts-node src/index.ts"
-  }
+    "start": "ts-node src/index.ts",
+    "_clear": "rimraf build/compiled/*",
+    "_tsc": "tsc",
+    "_make-bundle": "rollup --config",
+    "build": "run-s _clear _tsc _make-bundle"
+  },
+  "files": [
+    "dunchess-api.d.ts",
+    "dunchess-api.js",
+    "dunchess-api.js.map"
+  ],
+  "main": "dunchess-api.js",
+  "types": "dunchess-api.d.ts"
 }

@@ -55,8 +55,9 @@ export interface DungeonLayoutMapType <K extends CoordsType, V extends DungeonSq
   get(key: K): V | undefined
   has(key: K): boolean
   set(key: K, value: V): this
-  readonly size: number;
-  forEach(callbackfn: (value: V, key: K, map: Map<K, V>) => void, thisArg?: any): void;
+  readonly size: number
+  forEach(callbackfn: (value: V, key: K, map: Map<K, V>) => void, thisArg?: any): void
+  entries():  IterableIterator<[K, V]>
 }
 
 export type DungeonLayoutType = DungeonLayoutMapType<CoordsType, DungeonSquareType>

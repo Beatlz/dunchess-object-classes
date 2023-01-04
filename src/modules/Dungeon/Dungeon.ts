@@ -7,7 +7,7 @@ import { DUNGEON_SIZE } from "../.."
 export const isEven = (num: number): boolean => !(num % 2)
 
 export class Dungeon {
-	#layout: DungeonLayoutType = new Map()
+	layout: DungeonLayoutType = new Map()
 
 	constructor (layout?: DungeonLayoutType | number) {
 		this.setLayout(layout)
@@ -49,19 +49,22 @@ export class Dungeon {
 	}
 
 	clearLayout(): void {
-		this.#layout = this.createLayout(<number>this.getLayoutSize())
+		this.layout = this.createLayout(<number>this.getLayoutSize())
+	}
+	getLayoutEntries(): IterableIterator<[CoordsType, DungeonSquareType]> {
+		return this.layout.entries()
 	}
 	deleteSquare(coords: CoordsType): boolean {
-		return this.#layout.delete(coords)
+		return this.layout.delete(coords)
 	}
 	getSquare(coords: CoordsType): DungeonSquareType | undefined {
-		return this.#layout.get(coords)
+		return this.layout.get(coords)
 	}
 	hasSquare(coords: CoordsType): boolean {
-		return this.#layout.has(coords)
+		return this.layout.has(coords)
 	}
 	setSquare(coords: CoordsType, square: DungeonSquareType): void {
-		this.#layout.set(coords, square)
+		this.layout.set(coords, square)
 	}
 	activateSquare(coords: CoordsType): void {
 		if (!this.getSquare(coords)) return
@@ -70,19 +73,19 @@ export class Dungeon {
 	}
 	getLayoutSize(as2D?: `2D`): number | string {
 		return as2D === `2D`
-			? `${Math.sqrt(this.#layout.size)} x ${Math.sqrt(this.#layout.size)}` 
-			: this.#layout.size
+			? `${Math.sqrt(this.layout.size)} x ${Math.sqrt(this.layout.size)}` 
+			: this.layout.size
 	}
 	getLayout() {
-		return this.#layout
+		return this.layout
 	}
 	setLayout(layout?: DungeonLayoutType | number) {
 		if (!layout) {
-			this.#layout = this.createLayout(DUNGEON_SIZE)
+			this.layout = this.createLayout(DUNGEON_SIZE)
 		} else if (typeof layout === `number`) {
-			this.#layout = this.createLayout(layout)
+			this.layout = this.createLayout(layout)
 		} else {
-			this.#layout = layout
+			this.layout = layout
 		}
 	}
 }
