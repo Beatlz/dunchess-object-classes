@@ -1,5 +1,5 @@
-import type { CoordsType } from "../../../index"
-import type { GetMovesType } from "../../../index"
+import type { CoordsType } from "../../.."
+import type { GetMovesType } from "../../.."
 
 import { bishopMove } from "./BishopMove"
 import { verticalMove, horizontalMove } from "./GenericMoves"

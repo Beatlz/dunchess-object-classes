@@ -1,8 +1,8 @@
-import type { CoordsType } from "../../index"
-import type { DungeonSquareType, DungeonLayoutType } from "../../index"
+import type { CoordsType } from "../.."
+import type { DungeonSquareType, DungeonLayoutType } from "../.."
 
-import { COLORS } from "../../index"
-import { DUNGEON_SIZE } from "../../index"
+import { COLORS } from "../.."
+import { DUNGEON_SIZE } from "../.."
 
 export const isEven = (num: number): boolean => !(num % 2)
 

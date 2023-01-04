@@ -1,4 +1,4 @@
-import { CoordsType } from "../index"
+import { CoordsType } from ".."
 
 export enum colorsList {
   LIGHT,

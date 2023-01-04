@@ -1,8 +1,8 @@
-import type { PieceNameType, PiecePresetDescriptionType } from "../../../index"
+import type { PieceNameType, PiecePresetDescriptionType } from "../../.."
 
-import { Piece } from "../../../index"
-import { pawnMove } from "../../../index"
-import { PIECE_PAWN } from "../../../index"
+import { Piece } from "../../.."
+import { pawnMove } from "../../.."
+import { PIECE_PAWN } from "../../.."
 
 export class Pawn extends Piece {
 	readonly name: PieceNameType = PIECE_PAWN

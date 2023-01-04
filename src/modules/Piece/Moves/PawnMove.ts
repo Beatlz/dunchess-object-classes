@@ -1,5 +1,5 @@
-import type { CoordsType } from "../../../index"
-import type { GetMovesType } from "../../../index"
+import type { CoordsType } from "../../.."
+import type { GetMovesType } from "../../.."
 
 export const pawnMove: GetMovesType = (initialSquare: CoordsType, layoutSize: number): CoordsType[] => {
 	const { x, y } = initialSquare

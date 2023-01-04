@@ -1,5 +1,5 @@
-import { CoordsType } from "../index"
-import { ColorType } from "../index"
+import { CoordsType } from ".."
+import { ColorType } from ".."
 
 export enum pieceNames {
   PAWN,

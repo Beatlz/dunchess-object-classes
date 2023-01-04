@@ -1,5 +1,5 @@
-import type { CoordsType } from "../../../index"
-import type { GetMovesType } from "../../../index"
+import type { CoordsType } from "../../.."
+import type { GetMovesType } from "../../.."
 
 export const kingMove: GetMovesType = (initCoords: CoordsType, layoutSize: number): CoordsType[] => {
 	const { x, y } = initCoords

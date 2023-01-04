@@ -1,4 +1,4 @@
-import type { FeatureNameType, TileFeatureType, TileFeaturesListType } from "../../../index"
+import type { FeatureNameType, TileFeatureType, TileFeaturesListType } from "../../.."
 
 export class Tile {
 	isActive: boolean
