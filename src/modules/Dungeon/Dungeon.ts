@@ -1,5 +1,5 @@
 import type { CoordsType } from "../.."
-import type { DungeonSquareType, DungeonLayoutType } from "../.."
+import type { DungeonSquareType } from "../.."
 
 import { COLORS } from "../.."
 import { DUNGEON_SIZE } from "../.."
@@ -7,39 +7,38 @@ import { DUNGEON_SIZE } from "../.."
 export const isEven = (num: number): boolean => !(num % 2)
 
 export class Dungeon {
-	layout: DungeonLayoutType = new Map()
+	layout: DungeonSquareType[]
 
-	constructor (layout?: DungeonLayoutType | number) {
-		this.setLayout(layout)
+	constructor (layoutSize?: number) {
+		this.layout = layoutSize
+			? this.createLayout(layoutSize)
+			: this.createLayout(DUNGEON_SIZE)
 	}
 
-	createLayout(layoutSize: number): DungeonLayoutType {
-		const layout: DungeonLayoutType = new Map()
+	createLayout(layoutSize: number): DungeonSquareType[] {
+		const layout: DungeonSquareType[] = []
 
 		const totalTiles = Math.pow(layoutSize, 2)
 		const { LIGHT, DARK } = COLORS
-		const layoutIterator = new Array(totalTiles).fill({ x: null, y: null })
 		
 		let isRightSquareLight = true
 
-		for (const key of layoutIterator.keys()) {
-			const x = key % layoutSize
-			const y = layoutSize - Math.floor(key / layoutSize) - 1
-
-			layoutIterator[key] = { x, y }
+		for (let tile = 0; tile < totalTiles; tile++) {
+			const x = tile % layoutSize
+			const y = layoutSize - Math.floor(tile / layoutSize) - 1
 
 			if (isEven(layoutSize)) {
-				if (key % layoutSize) isRightSquareLight = !isRightSquareLight
+				if (tile % layoutSize) isRightSquareLight = !isRightSquareLight
 
-				layout.set(layoutIterator[key], {
+				layout.push({
 					x, y,
 					color: isRightSquareLight ? LIGHT : DARK,
 					isActive: false,
 				})
 			} else {
-				layout.set(layoutIterator[key], {
+				layout.push({
 					x, y,
-					color: isRightSquareLight ? LIGHT : DARK,
+					color: isEven(tile) ? LIGHT : DARK,
 					isActive: false,
 				})
 			}
@@ -49,37 +48,41 @@ export class Dungeon {
 	}
 
 	clearLayout(): void {
-		this.layout = this.createLayout(<number>this.getLayoutSize())
+		this.layout = []
 	}
-	getLayoutEntries(): IterableIterator<[CoordsType, DungeonSquareType]> {
-		return this.layout.entries()
+	deleteSquare(coords: string): void {
+		const descriptor = Object.getOwnPropertyDescriptor(this.layout, coords)
+
+		if (descriptor) {
+			delete descriptor.value
+		}
 	}
-	deleteSquare(coords: CoordsType): boolean {
-		return this.layout.delete(coords)
+	getSquareIndex(coords: CoordsType): number {
+		return this.layout.findIndex((square) => square.x === coords.x && square.y === coords.y)
 	}
 	getSquare(coords: CoordsType): DungeonSquareType | undefined {
-		return this.layout.get(coords)
+		return this.layout[this.getSquareIndex(coords)]
 	}
 	hasSquare(coords: CoordsType): boolean {
-		return this.layout.has(coords)
+		return !!this.layout[this.getSquareIndex(coords)]
 	}
 	setSquare(coords: CoordsType, square: DungeonSquareType): void {
-		this.layout.set(coords, square)
+		this.layout[this.getSquareIndex(coords)] = square
 	}
 	activateSquare(coords: CoordsType): void {
-		if (!this.getSquare(coords)) return
-
-		this.setSquare(coords, { ...this.getSquare(coords)!, isActive: true })
+		this.layout[this.getSquareIndex(coords)].isActive = true
 	}
 	getLayoutSize(as2D?: `2D`): number | string {
+		const totalSquares = this.layout.length
+
 		return as2D === `2D`
-			? `${Math.sqrt(this.layout.size)} x ${Math.sqrt(this.layout.size)}` 
-			: this.layout.size
+			? Math.sqrt(totalSquares)
+			: totalSquares
 	}
 	getLayout() {
 		return this.layout
 	}
-	setLayout(layout?: DungeonLayoutType | number) {
+	setLayout(layout?: DungeonSquareType[] | number) {
 		if (!layout) {
 			this.layout = this.createLayout(DUNGEON_SIZE)
 		} else if (typeof layout === `number`) {
