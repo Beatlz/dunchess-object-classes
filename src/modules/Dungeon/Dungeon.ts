@@ -1,5 +1,5 @@
 import type { CoordsType } from "../.."
-import type { DungeonSquareType, DungeonLayoutType } from "../.."
+import type { DungeonSquareType } from "../.."
 
 import { COLORS } from "../.."
 import { DUNGEON_SIZE } from "../.."
@@ -7,7 +7,7 @@ import { DUNGEON_SIZE } from "../.."
 export const isEven = (num: number): boolean => !(num % 2)
 
 export class Dungeon {
-	layout: DungeonLayoutType
+	layout: DungeonSquareType[]
 
 	constructor (layoutSize?: number) {
 		this.layout = layoutSize
@@ -15,32 +15,32 @@ export class Dungeon {
 			: this.createLayout(DUNGEON_SIZE)
 	}
 
-	createLayout(layoutSize: number): DungeonLayoutType {
-		const layout: DungeonLayoutType = {}
+	createLayout(layoutSize: number): DungeonSquareType[] {
+		const layout: DungeonSquareType[] = []
 
 		const totalTiles = Math.pow(layoutSize, 2)
 		const { LIGHT, DARK } = COLORS
 		
 		let isRightSquareLight = true
 
-		for (let square = 0; square <= totalTiles; square++) {
-			const x = square % layoutSize
-			const y = layoutSize - Math.floor(square / layoutSize)
+		for (let tile = 0; tile < totalTiles; tile++) {
+			const x = tile % layoutSize
+			const y = layoutSize - Math.floor(tile / layoutSize) - 1
 
 			if (isEven(layoutSize)) {
-				if (square % layoutSize) isRightSquareLight = !isRightSquareLight
+				if (tile % layoutSize) isRightSquareLight = !isRightSquareLight
 
-				layout[`x${x}y${y}`] = {
+				layout.push({
 					x, y,
 					color: isRightSquareLight ? LIGHT : DARK,
 					isActive: false,
-				}
+				})
 			} else {
-				layout[`x${x}y${y}`] = {
+				layout.push({
 					x, y,
-					color: isRightSquareLight ? LIGHT : DARK,
+					color: isEven(tile) ? LIGHT : DARK,
 					isActive: false,
-				}
+				})
 			}
 		}
 
@@ -48,7 +48,7 @@ export class Dungeon {
 	}
 
 	clearLayout(): void {
-		this.layout = {}
+		this.layout = []
 	}
 	deleteSquare(coords: string): void {
 		const descriptor = Object.getOwnPropertyDescriptor(this.layout, coords)
@@ -57,31 +57,32 @@ export class Dungeon {
 			delete descriptor.value
 		}
 	}
+	getSquareIndex(coords: CoordsType): number {
+		return this.layout.findIndex((square) => square.x === coords.x && square.y === coords.y)
+	}
 	getSquare(coords: CoordsType): DungeonSquareType | undefined {
-		return this.layout[`x${coords.x}y${coords.y}`]
+		return this.layout[this.getSquareIndex(coords)]
 	}
 	hasSquare(coords: CoordsType): boolean {
-		return !!this.layout[`x${coords.x}y${coords.y}`]
+		return !!this.layout[this.getSquareIndex(coords)]
 	}
 	setSquare(coords: CoordsType, square: DungeonSquareType): void {
-		this.layout[`x${coords.x}y${coords.y}`] = square
+		this.layout[this.getSquareIndex(coords)] = square
 	}
 	activateSquare(coords: CoordsType): void {
-		if (!this.getSquare(coords)) return
-
-		this.setSquare(coords, { ...this.getSquare(coords)!, isActive: true })
+		this.layout[this.getSquareIndex(coords)].isActive = true
 	}
 	getLayoutSize(as2D?: `2D`): number | string {
-		const totalSquares = Object.keys(this.layout).length
+		const totalSquares = this.layout.length
 
 		return as2D === `2D`
-			? `${Math.sqrt(totalSquares)} x ${Math.sqrt(totalSquares)}` 
+			? Math.sqrt(totalSquares)
 			: totalSquares
 	}
 	getLayout() {
 		return this.layout
 	}
-	setLayout(layout?: DungeonLayoutType | number) {
+	setLayout(layout?: DungeonSquareType[] | number) {
 		if (!layout) {
 			this.layout = this.createLayout(DUNGEON_SIZE)
 		} else if (typeof layout === `number`) {
