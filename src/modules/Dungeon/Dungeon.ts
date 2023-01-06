@@ -63,14 +63,32 @@ export class Dungeon {
 	getSquare(coords: CoordsType): DungeonSquareType | undefined {
 		return this.layout[this.getSquareIndex(coords)]
 	}
-	hasSquare(coords: CoordsType): boolean {
-		return !!this.layout[this.getSquareIndex(coords)]
-	}
 	setSquare(coords: CoordsType, square: DungeonSquareType): void {
 		this.layout[this.getSquareIndex(coords)] = square
 	}
 	activateSquare(coords: CoordsType): void {
 		this.layout[this.getSquareIndex(coords)].isActive = true
+	}
+	activateAllSquares(): void {
+		this.getLayout().forEach((square) => {
+			this.activateSquare({ x: square.x, y: square.y })
+		})
+	}
+	deactivateSquare(coords: CoordsType): void {
+		this.layout[this.getSquareIndex(coords)].isActive = false
+	}
+	deactivateAllSquares(): void {
+		this.getLayout().forEach((square) => {
+			this.deactivateSquare({ x: square.x, y: square.y })
+		})
+	}
+	toggleSquare(coords: CoordsType): void {
+		this.layout[this.getSquareIndex(coords)].isActive = !this.layout[this.getSquareIndex(coords)].isActive
+	}
+	toggleAllSquares(): void {
+		this.getLayout().forEach((square) => {
+			this.toggleSquare({ x: square.x, y: square.y })
+		})
 	}
 	getLayoutSize(as2D?: `2D`): number | string {
 		const totalSquares = this.layout.length
