@@ -29,7 +29,8 @@
     "_clear": "rimraf build/compiled/*",
     "_tsc": "tsc",
     "_make-bundle": "rollup --config",
-    "build": "run-s _clear _tsc _make-bundle"
+    "_pkg": "node generatePkg.js",
+    "build": "run-s _clear _tsc _pkg _make-bundle"
   },
   "files": [
     "dunchess-api.d.ts",
