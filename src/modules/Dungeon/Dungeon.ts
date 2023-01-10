@@ -110,3 +110,5 @@ export class Dungeon {
 		}
 	}
 }
+
+export type DungeonType = Dungeon

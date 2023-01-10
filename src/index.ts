@@ -1,9 +1,9 @@
 /* TYPES */
 export * from "./types/constants"
 export * from "./types/CoordsType"
-export * from "./types/DungeonType"
-export * from "./types/PieceType"
-export * from "./types/RulesType"
+export * from "./types/DungeonTypes"
+export * from "./types/PieceTypes"
+export * from "./types/RulesTypes"
 /* MODULES */
 // // Dungeon
 export * from "./modules/Dungeon/Dungeon"
