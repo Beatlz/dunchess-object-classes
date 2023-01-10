@@ -5,13 +5,12 @@
 2. Tiles/squares (spawners, frozen squares, etc.)
 3. Initial pieces
 4. Pieces' movement
-5. Power ups
+5. Buffs/debuffs
 6. Turns (movements per piece, movements per player, etc.)
 7. End of game rules
 8. Fog of war
 
 So, basically, what `Rules.setRules(<RulesType>rules)` does is modify all the defaults from the list.
-
 ## Modify some rules of an existing preset
 We can also use a preset but change some of the rules within it (the order of the destructuring matters):
 
