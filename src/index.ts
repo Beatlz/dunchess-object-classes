@@ -2,6 +2,7 @@
 export * from "./types/constants"
 export * from "./types/CoordsType"
 export * from "./types/DungeonTypes"
+export * from "./types/GameTypes"
 export * from "./types/PieceTypes"
 export * from "./types/RulesTypes"
 /* MODULES */

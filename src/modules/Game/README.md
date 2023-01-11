@@ -23,6 +23,14 @@ This means that a `Game()` object holds:
 ### Dungeons:
 `<DungeonType[]>Game.dungeons()`
 ## Properties
+```
+#rules: RulesType
+#pieces: PieceType[] = []
+#dungeons: DungeonType[] = []
+#initialState: GameStateType = {}
+#currentState: GameStateType = {}
+#stateChanges: GameActionType[] = []
+```
 ### Rules
 ### Initial state
 ### Current state
