@@ -8,6 +8,6 @@ export class Bishop extends Piece {
 	readonly name: PieceNameType = PIECE_NAMES.BISHOP
 
 	constructor (pieceDescription: PiecePresetDescriptionType) {
-		super({ ...pieceDescription, moves: [bishopMove] })
+		super({ ...pieceDescription, name: PIECE_NAMES.BISHOP, moves: [bishopMove] })
 	}
 }

@@ -78,5 +78,5 @@ export interface PiecePresetDescriptionType {
   lives?: number
   // inventory?: ItemType[] ==> Not MVP
   statusModifiers?: PieceModifyingFunctionType[]
-  name: string
+  name?: string
 }

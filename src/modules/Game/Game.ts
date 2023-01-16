@@ -1,49 +1,51 @@
 import type { RulesType } from "../.."
 import type { PieceType } from "../.."
 import type { DungeonType } from "../.."
-import type { GameActionType, GameStateType } from "../.."
+import type { GameStateType } from "../.."
 
 export class Game {
-	#rules: RulesType
-	#pieces: PieceType[] = []
-	#dungeons: DungeonType[] = []
-	#initialState: GameStateType = {}
-	#currentState: GameStateType = {}
-	#stateChanges: GameActionType[] = []
-  
-	constructor (rules: RulesType) {
-		this.#rules = rules
-	}
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	private _rules: any = []
+	private _pieces: PieceType[] = []
+	private _dungeons: DungeonType[] = []
+	private _initialState: GameStateType[] = []
+	private _currentState: GameStateType[] = []
+	// _stateChanges: GameActionType[] = []
 
 	get rules(): RulesType {
-		return this.#rules
+		return this._rules
+	}
+	set rules(rules: RulesType) {
+		this._rules = rules
 	}
 
 	get pieces(): PieceType[] {
-		return this.#pieces
+		return this._pieces
 	}
 	set pieces(pieces: PieceType[]) {
-		this.#pieces = [...this.pieces, ...pieces]
+		this._pieces = [...this.pieces, ...pieces]
 	}
 
 	get dungeons(): DungeonType[] {
-		return this.#dungeons
+		return this._dungeons
 	}
 	set dungeons(dungeons: DungeonType[]) {
-		this.#dungeons = [...this.dungeons, ...dungeons]
+		this._dungeons = [...this.dungeons, ...dungeons]
 	}
 
-	get initialState(): GameStateType {
-		return this.#initialState
+	get initialState(): GameStateType[] {
+		return this._initialState
 	}
-	set initialState(initialState: GameStateType) {
-		this.#initialState = initialState
+	set initialState(initialState: GameStateType[]) {
+		this._initialState = initialState
 	}
 
-	get currentState(): GameStateType {
-		return this.#currentState
+	get currentState(): GameStateType[] {
+		return this._currentState
 	}
-	set currentState(currentState: GameStateType) {
-		this.#currentState = currentState
+	set currentState(currentState: GameStateType[]) {
+		this._currentState = currentState
 	}
 }
+
+export type GameType = Game

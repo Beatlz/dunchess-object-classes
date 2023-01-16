@@ -8,6 +8,6 @@ export class Rook extends Piece {
 	readonly name: PieceNameType = PIECE_NAMES.ROOK
 
 	constructor (pieceDescription: PiecePresetDescriptionType) {
-		super({ ...pieceDescription, moves: [rookMove] })
+		super({ ...pieceDescription, name: PIECE_NAMES.ROOK, moves: [rookMove] })
 	}
 }

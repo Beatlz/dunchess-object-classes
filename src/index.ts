@@ -11,6 +11,7 @@ export * from "./modules/Dungeon/Dungeon"
 // // // Tile
 export * from "./modules/Dungeon/Tile/Tile"
 // // Game
+export * from "./modules/Game/Game"
 // // // Rules
 export * from "./modules/Game/Rules/Rules"
 // // Piece
