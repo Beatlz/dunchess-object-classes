@@ -7,12 +7,20 @@ import { DUNGEON_SIZE } from "../.."
 export const isEven = (num: number): boolean => !(num % 2)
 
 export class Dungeon {
-	layout: DungeonSquareType[]
+	private _layout: DungeonSquareType[]
 
 	constructor (layoutSize?: number) {
-		this.layout = layoutSize
+		this._layout = layoutSize
 			? this.createLayout(layoutSize)
 			: this.createLayout(DUNGEON_SIZE)
+	}
+
+	set layout(layout: DungeonSquareType[]) {
+		this._layout = layout
+	}
+
+	get layout(): DungeonSquareType[] {
+		return this._layout
 	}
 
 	createLayout(layoutSize: number): DungeonSquareType[] {
@@ -70,7 +78,7 @@ export class Dungeon {
 		this.layout[this.getSquareIndex(coords)].isActive = true
 	}
 	activateAllSquares(): void {
-		this.getLayout().forEach((square) => {
+		this.layout.forEach((square) => {
 			this.activateSquare({ x: square.x, y: square.y })
 		})
 	}
@@ -78,7 +86,7 @@ export class Dungeon {
 		this.layout[this.getSquareIndex(coords)].isActive = false
 	}
 	deactivateAllSquares(): void {
-		this.getLayout().forEach((square) => {
+		this.layout.forEach((square) => {
 			this.deactivateSquare({ x: square.x, y: square.y })
 		})
 	}
@@ -86,7 +94,7 @@ export class Dungeon {
 		this.layout[this.getSquareIndex(coords)].isActive = !this.layout[this.getSquareIndex(coords)].isActive
 	}
 	toggleAllSquares(): void {
-		this.getLayout().forEach((square) => {
+		this.layout.forEach((square) => {
 			this.toggleSquare({ x: square.x, y: square.y })
 		})
 	}
@@ -96,18 +104,6 @@ export class Dungeon {
 		return as2D === `2D`
 			? Math.sqrt(totalSquares)
 			: totalSquares
-	}
-	getLayout() {
-		return this.layout
-	}
-	setLayout(layout?: DungeonSquareType[] | number) {
-		if (!layout) {
-			this.layout = this.createLayout(DUNGEON_SIZE)
-		} else if (typeof layout === `number`) {
-			this.layout = this.createLayout(layout)
-		} else {
-			this.layout = layout
-		}
 	}
 }
 
