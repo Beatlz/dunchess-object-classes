@@ -1,16 +1,16 @@
-import type { RulesType } from "../.."
-import type { PieceType } from "../.."
+import { RulesType } from "../.."
 import type { DungeonType } from "../.."
-import type { GameStateType } from "../.."
 
 export class Game {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	private _rules: any = []
-	private _pieces: PieceType[] = []
-	private _dungeons: DungeonType[] = []
-	private _initialState: GameStateType[] = []
-	private _currentState: GameStateType[] = []
-	// _stateChanges: GameActionType[] = []
+	private _dungeon: DungeonType
+	private _initialState: DungeonType
+
+	constructor(dungeon: DungeonType) {
+		this._dungeon = dungeon
+		this._initialState = dungeon
+	}
 
 	get rules(): RulesType {
 		return this._rules
@@ -19,32 +19,15 @@ export class Game {
 		this._rules = rules
 	}
 
-	get pieces(): PieceType[] {
-		return this._pieces
+	get dungeon(): DungeonType {
+		return this._dungeon
 	}
-	set pieces(pieces: PieceType[]) {
-		this._pieces = [...this.pieces, ...pieces]
-	}
-
-	get dungeons(): DungeonType[] {
-		return this._dungeons
-	}
-	set dungeons(dungeons: DungeonType[]) {
-		this._dungeons = [...this.dungeons, ...dungeons]
+	set dungeon(dungeon: DungeonType) {
+		this._dungeon = dungeon
 	}
 
-	get initialState(): GameStateType[] {
+	get initialState(): DungeonType {
 		return this._initialState
-	}
-	set initialState(initialState: GameStateType[]) {
-		this._initialState = initialState
-	}
-
-	get currentState(): GameStateType[] {
-		return this._currentState
-	}
-	set currentState(currentState: GameStateType[]) {
-		this._currentState = currentState
 	}
 }
 

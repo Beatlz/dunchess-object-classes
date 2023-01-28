@@ -1,4 +1,4 @@
-import { CoordsType } from ".."
+import { CoordsType, PieceType } from ".."
 
 export enum colorsList {
   LIGHT,
@@ -32,6 +32,7 @@ export type FeatureNameType = keyof typeof featuresList
 export interface TileFeatureType {
   name: FeatureNameType
   isActive: boolean
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   action: (params: any) => any // To do: rework
 }
 
@@ -48,6 +49,7 @@ export interface DungeonSquareType extends CoordsType {
   color: ColorType
   isActive: boolean
   tile?: TileType
+  piece?: PieceType
 }
 
 export interface DungeonLayoutType { [key: string]: DungeonSquareType }
