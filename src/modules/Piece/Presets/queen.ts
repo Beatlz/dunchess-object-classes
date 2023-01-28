@@ -8,6 +8,6 @@ export class Queen extends Piece {
 	readonly name: PieceNameType = PIECE_NAMES.QUEEN
 
 	constructor (pieceDescription: PiecePresetDescriptionType) {
-		super({ ...pieceDescription, moves: [queenMove] })
+		super({ ...pieceDescription, name: PIECE_NAMES.QUEEN, moves: [queenMove] })
 	}
 }

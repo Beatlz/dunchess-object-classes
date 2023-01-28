@@ -1,4 +1,4 @@
-import { DungeonLayoutType, DungeonSquareType } from ".."
+import { DungeonLayoutType } from ".."
 import { PieceDescriptionType } from ".."
 
 export enum rulesPresetNames {
@@ -14,7 +14,6 @@ export interface RulesType {
   // players: ReturnType<typeof setRule<PlayerType[], boolean>>
   playersCanJoin: ReturnType<SetRuleType<boolean>>
   dungeonLayout: ReturnType<SetRuleType<DungeonLayoutType>>
-  squares: ReturnType<SetRuleType<DungeonSquareType[]>>
   pieces: ReturnType<SetRuleType<PieceDescriptionType[]>>
   movesPerTurn: ReturnType<SetRuleType<number>>
 }

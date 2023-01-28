@@ -8,6 +8,6 @@ export class Pawn extends Piece {
 	readonly name: PieceNameType = PIECE_NAMES.PAWN
 
 	constructor (pieceDescription: PiecePresetDescriptionType) {
-		super({ ...pieceDescription, moves: [pawnMove] })
+		super({ ...pieceDescription, name: PIECE_NAMES.PAWN, moves: [pawnMove] })
 	}
 }

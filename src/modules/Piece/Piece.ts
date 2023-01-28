@@ -55,3 +55,5 @@ export class Piece {
 		return !!this.lives
 	}
 }
+
+export type PieceType = Piece
