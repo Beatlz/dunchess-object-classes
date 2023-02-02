@@ -98,7 +98,7 @@ export class Dungeon {
 			this.toggleSquare({ x: square.x, y: square.y })
 		})
 	}
-	getLayoutSize(as2D?: `2D`): number | string {
+	layoutSize(as2D?: `2D`): number | string {
 		const totalSquares = this.layout.length
 
 		return as2D === `2D`

@@ -49,8 +49,8 @@ Stores the location and color of each square.
 ## Methods
 ### Create layout (`Dungeon.createLayout(<number>) => DungeonLayoutType`)
 Creates an empty layout for a dungeon given a size number
-### Get layout size (`Dungeon.getLayoutSize(<'2D'?>) => number | string`)
-Returns the total tiles of the dungeon. If a `<'2D?>` argument is passed down as a parameter as `2D`, it returns a string with the 2d description of the layout. For example, if the Dungeon Layout has 64 squares, `Dungeon.getLayoutSize('2D')` would return `8 x 8`. Accepted params: `'2D'`.
+### Get layout size (`Dungeon.layoutSize(<'2D'?>) => number | string`)
+Returns the total tiles of the dungeon. If a `<'2D?>` argument is passed down as a parameter as `2D`, it returns a string with the 2d description of the layout. For example, if the Dungeon Layout has 64 squares, `Dungeon.layoutSize('2D')` would return `8 x 8`. Accepted params: `'2D'`.
 ### Layout setter (`Dugeon.setLayout(<DungeonLayoutType> | number) => void | error`)
 Sets a layout for the dungeon given a valid Dungeon Layout or size (1D).
 ### Layout getter (`Dungeon.getLayout() => DungeonLayoutType`)
