@@ -31,7 +31,7 @@ export class Dungeon {
 		
 		let isRightSquareLight = true
 
-		for (let square = 0; square <= totalTiles; square++) {
+		for (let square = 0; square < totalTiles; square++) {
 			const x = square % layoutSize
 			const y = Math.floor(square / layoutSize)
 
