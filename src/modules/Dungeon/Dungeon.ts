@@ -40,13 +40,13 @@ export class Dungeon {
 
 				layout[`x${x}y${y}`] = {
 					x, y,
-					color: isRightSquareLight ? LIGHT : DARK,
+					color: !isRightSquareLight ? LIGHT : DARK,
 					isActive: false,
 				}
 			} else {
 				layout[`x${x}y${y}`] = {
 					x, y,
-					color: isRightSquareLight ? LIGHT : DARK,
+					color: isEven(square) ? LIGHT : DARK,
 					isActive: false,
 				}
 			}
