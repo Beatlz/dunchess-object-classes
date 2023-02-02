@@ -1,5 +1,5 @@
 import type { CoordsType } from "../.."
-import type { DungeonSquareType } from "../.."
+import type { DungeonSquareType, DungeonLayoutType } from "../.."
 
 import { COLORS } from "../.."
 import { DUNGEON_SIZE } from "../.."
@@ -7,7 +7,7 @@ import { DUNGEON_SIZE } from "../.."
 export const isEven = (num: number): boolean => !(num % 2)
 
 export class Dungeon {
-	private _layout: DungeonSquareType[]
+	private _layout: DungeonLayoutType
 
 	constructor (layoutSize?: number) {
 		this._layout = layoutSize
@@ -15,40 +15,40 @@ export class Dungeon {
 			: this.createLayout(DUNGEON_SIZE)
 	}
 
-	set layout(layout: DungeonSquareType[]) {
+	set layout(layout: DungeonLayoutType) {
 		this._layout = layout
 	}
 
-	get layout(): DungeonSquareType[] {
+	get layout(): DungeonLayoutType {
 		return this._layout
 	}
 
-	createLayout(layoutSize: number): DungeonSquareType[] {
-		const layout: DungeonSquareType[] = []
+	createLayout(layoutSize: number): DungeonLayoutType {
+		const layout: DungeonLayoutType = {}
 
 		const totalTiles = Math.pow(layoutSize, 2)
 		const { LIGHT, DARK } = COLORS
 		
 		let isRightSquareLight = true
 
-		for (let tile = 0; tile < totalTiles; tile++) {
-			const x = tile % layoutSize
-			const y = layoutSize - Math.floor(tile / layoutSize) - 1
+		for (let square = 0; square <= totalTiles; square++) {
+			const x = square % layoutSize
+			const y = layoutSize - Math.floor(square / layoutSize) - 1
 
 			if (isEven(layoutSize)) {
-				if (tile % layoutSize) isRightSquareLight = !isRightSquareLight
+				if (square % layoutSize) isRightSquareLight = !isRightSquareLight
 
-				layout.push({
+				layout[`x${x}y${y}`] = {
 					x, y,
 					color: isRightSquareLight ? LIGHT : DARK,
 					isActive: false,
-				})
+				}
 			} else {
-				layout.push({
+				layout[`x${x}y${y}`] = {
 					x, y,
-					color: isEven(tile) ? LIGHT : DARK,
+					color: isRightSquareLight ? LIGHT : DARK,
 					isActive: false,
-				})
+				}
 			}
 		}
 
@@ -56,7 +56,7 @@ export class Dungeon {
 	}
 
 	clearLayout(): void {
-		this.layout = []
+		this.layout = {}
 	}
 	deleteSquare(coords: string): void {
 		const descriptor = Object.getOwnPropertyDescriptor(this.layout, coords)
@@ -65,41 +65,26 @@ export class Dungeon {
 			delete descriptor.value
 		}
 	}
-	getSquareIndex(coords: CoordsType): number {
-		return this.layout.findIndex((square) => square.x === coords.x && square.y === coords.y)
-	}
 	getSquare(coords: CoordsType): DungeonSquareType | undefined {
-		return this.layout[this.getSquareIndex(coords)]
+		if (!this.getSquare(coords))
+			throw TypeError(`Coords ${coords} are out of range`)
+
+		return this.layout[`x${coords.x}y${coords.y}`]
+	}
+	hasSquare(coords: CoordsType): boolean {
+		return !!this.layout[`x${coords.x}y${coords.y}`]
 	}
 	setSquare(coords: CoordsType, square: DungeonSquareType): void {
-		this.layout[this.getSquareIndex(coords)] = square
+		this.layout[`x${coords.x}y${coords.y}`] = square
 	}
 	activateSquare(coords: CoordsType): void {
-		this.layout[this.getSquareIndex(coords)].isActive = true
+		if (!this.getSquare(coords))
+			throw TypeError(`Coords ${coords} are out of range`)
+
+		this.setSquare(coords, { ...(<DungeonSquareType>this.getSquare(coords)), isActive: true })
 	}
-	activateAllSquares(): void {
-		this.layout.forEach((square) => {
-			this.activateSquare({ x: square.x, y: square.y })
-		})
-	}
-	deactivateSquare(coords: CoordsType): void {
-		this.layout[this.getSquareIndex(coords)].isActive = false
-	}
-	deactivateAllSquares(): void {
-		this.layout.forEach((square) => {
-			this.deactivateSquare({ x: square.x, y: square.y })
-		})
-	}
-	toggleSquare(coords: CoordsType): void {
-		this.layout[this.getSquareIndex(coords)].isActive = !this.layout[this.getSquareIndex(coords)].isActive
-	}
-	toggleAllSquares(): void {
-		this.layout.forEach((square) => {
-			this.toggleSquare({ x: square.x, y: square.y })
-		})
-	}
-	layoutSize(as2D?: `2D`): number {
-		const totalSquares = this.layout.length
+	getLayoutSize(as2D?: `2D`): number | string {
+		const totalSquares = Object.keys(this.layout).length
 
 		return as2D === `2D`
 			? Math.sqrt(totalSquares)
