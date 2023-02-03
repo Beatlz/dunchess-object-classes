@@ -65,10 +65,7 @@ export class Dungeon {
 			delete descriptor.value
 		}
 	}
-	getSquare(coords: CoordsType): DungeonSquareType | undefined {
-		if (!this.getSquare(coords))
-			throw TypeError(`Coords ${coords} are out of range`)
-
+	getSquare(coords: CoordsType): DungeonSquareType {
 		return this.layout[`x${coords.x}y${coords.y}`]
 	}
 	hasSquare(coords: CoordsType): boolean {
