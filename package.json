@@ -30,7 +30,8 @@
     "_tsc": "tsc",
     "_make-bundle": "rollup --config",
     "_pkg": "node generatePkg.js",
-    "build": "run-s _clear _make-bundle"
+    "build": "run-s _clear _make-bundle",
+    "prepare": "npm run build"
   },
   "files": [
     "build/index.d.ts",
