@@ -5,7 +5,7 @@ const config = [
 	{
 		input: `src/index.ts`,
 		output: {
-			file: `build/dunchess-api.js`,
+			file: `build/index.js`,
 			format: `cjs`,
 			sourcemap: true,
 		},
@@ -15,7 +15,7 @@ const config = [
 	{
 		input: `build/index.d.ts`,
 		output: {
-			file: `build/dunchess-api.d.ts`,
+			file: `build/index.d.ts`,
 			format: `es`,
 		},
 		plugins: [dts()],
