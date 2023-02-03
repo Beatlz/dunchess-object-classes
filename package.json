@@ -26,17 +26,18 @@
   },
   "scripts": {
     "start": "ts-node src/index.ts",
-    "_clear": "rimraf build/compiled/*",
+    "_clear": "rimraf build/*",
     "_tsc": "tsc",
     "_make-bundle": "rollup --config",
     "_pkg": "node generatePkg.js",
-    "build": "run-s _clear _tsc _pkg _make-bundle"
+    "build": "run-s _clear _make-bundle",
+    "prepare": "npm run build"
   },
   "files": [
-    "dunchess-api.d.ts",
-    "dunchess-api.js",
-    "dunchess-api.js.map"
+    "build/index.d.ts",
+    "build/index.js",
+    "build/index.js.map"
   ],
-  "main": "dunchess-api.js",
-  "types": "dunchess-api.d.ts"
+  "main": "build/index.js",
+  "types": "build/index.d.ts"
 }

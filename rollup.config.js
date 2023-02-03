@@ -3,18 +3,19 @@ import dts from "rollup-plugin-dts"
 
 const config = [
 	{
-		input: `build/compiled/index.js`,
+		input: `src/index.ts`,
 		output: {
-			file: `dunchess-api.js`,
+			file: `build/index.js`,
 			format: `cjs`,
 			sourcemap: true,
 		},
 		external: [],
 		plugins: [typescript()],
-	}, {
-		input: `build/compiled/index.d.ts`,
+	},
+	{
+		input: `build/index.d.ts`,
 		output: {
-			file: `dunchess-api.d.ts`,
+			file: `build/index.d.ts`,
 			format: `es`,
 		},
 		plugins: [dts()],

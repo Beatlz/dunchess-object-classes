@@ -3,3 +3,5 @@
 /build
 
 *.tgz
+
+.DS_Store
