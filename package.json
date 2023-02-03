@@ -30,7 +30,7 @@
     "_tsc": "tsc",
     "_make-bundle": "rollup --config",
     "_pkg": "node generatePkg.js",
-    "build": "run-s _clear _tsc _pkg _make-bundle"
+    "build": "run-s _clear _make-bundle _pkg"
   },
   "files": [
     "dunchess-api.d.ts",

@@ -1,7 +1,7 @@
 import fs from 'fs'
 
 fs.writeFileSync(
-	`./build/compiled/package.json`,
+	`./build/package.json`,
 	JSON.stringify({
 		"name": `dunchess-api`,
 		"version": `1.0.0`,
