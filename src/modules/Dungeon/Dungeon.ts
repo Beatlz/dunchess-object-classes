@@ -83,6 +83,9 @@ export class Dungeon {
 
 		this.setSquare(coords, { ...(<DungeonSquareType>this.getSquare(coords)), isActive: true })
 	}
+	toggleSquare(coords: CoordsType): void {
+		this.layout[`x${coords.x}y${coords.y}`].isActive = !this.layout[`x${coords.x}y${coords.y}`].isActive
+	}
 	layoutSize(as2D?: `2D`): number {
 		const totalSquares = Object.keys(this.layout).length
 
