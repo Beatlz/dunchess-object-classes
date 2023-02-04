@@ -75,13 +75,15 @@ export class Dungeon {
 		this.layout[`x${coords.x}y${coords.y}`] = square
 	}
 	activateSquare(coords: CoordsType): void {
-		if (!this.getSquare(coords))
-			throw TypeError(`Coords ${coords} are out of range`)
-
-		this.setSquare(coords, { ...(<DungeonSquareType>this.getSquare(coords)), isActive: true })
+		this.layout[`x${coords.x}y${coords.y}`].isActive = true
 	}
-	toggleSquare(coords: CoordsType): void {
+	deactivateSquare(coords: CoordsType): void {
+		this.layout[`x${coords.x}y${coords.y}`].isActive = false
+	}
+	toggleSquare(coords: CoordsType): boolean {
 		this.layout[`x${coords.x}y${coords.y}`].isActive = !this.layout[`x${coords.x}y${coords.y}`].isActive
+
+		return this.layout[`x${coords.x}y${coords.y}`].isActive
 	}
 	layoutSize(as2D?: `2D`): number {
 		const totalSquares = Object.keys(this.layout).length

@@ -59,7 +59,11 @@ Returns the layout of the dungeon
 Sets a specific square for the dungeon. Returns an error if the type is incorrect or the square coords `{ x: number, y: number }` are out of range.
 ### Square getter (`Dungeon.getSquare(<CoordsType>) => <DungeonSquareType> | error`)
 Returns the state of the square in a set of given coords or returns an error if the coords are out of range.
-### Square activation (`Dungeon.activateSquare(<CoordsType>, <TileType?>) => void | error`)
-Sets a square's `isActive` property as `true`. If a second argument `<TileType>tile` is passed, it will run `Dungeon.setTile(<CoordsType>)` with that parameter. 
+### Activate square (`Dungeon.activateSquare(<CoordsType>, <TileType?>) => void | error`)
+Sets a square's `isActive` property as `true`.
+### Deactivate square(`Dungeon.activateSquare(<CoordsType>, <TileType?>) => void | error`)
+Sets a square's `isActive` property as `false`. 
+### Toggle square (`Dungeon.toggleSquare(<CoordsType>) => boolean`)
+Toggles the `isActive` status of a square and returns the final state
 
 Throws an error if the square coords are out of range.
