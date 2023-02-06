@@ -8,7 +8,7 @@ export class Piece {
 	public color: ColorType
 	public moves: GetMovesType[]
 	public lives: number
-	public statusModifiers: PieceModifyingFunctionType[]
+	public statusModifiers: PieceModifyingFunctionType[] // TODO: might not be needed. It seems pretty stateless.
 	readonly name: string
 
 	constructor(pieceDescription: PieceDescriptionType) {
