@@ -67,6 +67,12 @@ Sets a square's `isActive` property as `false`.
 Toggles the `isActive` status of a square and returns the final state
 ### Add piece to dungeon (`Dungeon.addPiece(<PieceType>, <CoordsType>) => void`)
 Adds a piece to a dungeon to the given coords
+### Remove piece from dungeon (`Dungeon.removePiece(<CoordsType) => void`)
+Removes a piece from a dungeon square given some coords. If you pass the optional parameter piece, it will replace it with it.
+### Add tile to dungeon (`Dungeon.addTile(<TileType>, <CoordsType>)`)
+Adds a tile to a dungeon given some chords
+### Remove tile from dungeon (`Dungeon.removeTile(<CoordsType>)`)
+Removes a tile from the dungeon given some coords
 ### Export layout to JSON (`Dungeon.exportLayoutToJSON(<Boolean>) => string`)
 Exports the dungeon layout to a JSON object. It allows a parameter that optimizes the layout by default. The optimized version only saves active tiles. Although what it returns is a string, it still holds this structure:
 ```

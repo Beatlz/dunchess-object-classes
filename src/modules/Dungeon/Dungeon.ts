@@ -1,4 +1,4 @@
-import type { CoordsType, PieceType } from "../.."
+import type { CoordsType, PieceType, TileType } from "../.."
 import type { DungeonSquareType, DungeonLayoutType } from "../.."
 
 import { COLORS } from "../.."
@@ -94,6 +94,15 @@ export class Dungeon {
 	}
 	addPiece(piece: PieceType, coords: CoordsType) {
 		this.layout[`x${coords.x}y${coords.y}`].piece = piece
+	}
+	removePiece(coords: CoordsType) {
+		delete this.layout[`x${coords.x}y${coords.y}`].piece
+	}
+	addTile(tile: TileType, coords: CoordsType) {
+		this.layout[`x${coords.x}y${coords.y}`].tile = tile
+	}
+	removeTile(coords: CoordsType) {
+		delete this.layout[`x${coords.x}y${coords.y}`].tile
 	}
 	exportLayoutToJSONStandard(optimize = true): string {
 		const layout = this.layout
