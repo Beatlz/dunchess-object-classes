@@ -95,6 +95,17 @@ export class Dungeon {
 	addPiece(piece: PieceType, coords: CoordsType) {
 		this.layout[`x${coords.x}y${coords.y}`].piece = piece
 	}
+	exportLayoutToJSONStandard(optimize = true): string {
+		const layout = this.layout
+		const JSONStandard = optimize 
+			? Object.values(layout).filter(square => square.isActive)
+			: Object.values(layout)
+		
+		return JSON.stringify({
+			layoutSize: this.layoutSize,
+			layout: JSONStandard,
+		})
+	}
 }
 
 export type DungeonType = Dungeon
