@@ -65,5 +65,5 @@ Sets a square's `isActive` property as `true`.
 Sets a square's `isActive` property as `false`. 
 ### Toggle square (`Dungeon.toggleSquare(<CoordsType>) => boolean`)
 Toggles the `isActive` status of a square and returns the final state
-
-Throws an error if the square coords are out of range.
+### Add piece to dungeon (`Dungeon.addPiece(<PieceType>, <CoordsType>) => void`)
+Adds a piece to a dungeon to the given coords

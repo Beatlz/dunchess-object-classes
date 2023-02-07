@@ -1,4 +1,4 @@
-import type { CoordsType } from "../.."
+import type { CoordsType, PieceType } from "../.."
 import type { DungeonSquareType, DungeonLayoutType } from "../.."
 
 import { COLORS } from "../.."
@@ -91,6 +91,9 @@ export class Dungeon {
 		return as2D === `2D`
 			? Math.sqrt(totalSquares)
 			: totalSquares
+	}
+	addPiece(piece: PieceType, coords: CoordsType) {
+		this.layout[`x${coords.x}y${coords.y}`].piece = piece
 	}
 }
 
