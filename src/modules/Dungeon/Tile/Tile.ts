@@ -47,3 +47,5 @@ export class Tile {
 		return !!this.getFeatures().length
 	}
 }
+
+export type TileType = Tile

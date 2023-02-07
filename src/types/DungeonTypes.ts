@@ -1,4 +1,4 @@
-import { CoordsType, PieceType } from ".."
+import { CoordsType, PieceType, TileType } from ".."
 
 export enum colorsList {
   LIGHT,
@@ -37,11 +37,6 @@ export interface TileFeatureType {
 }
 
 export type TileFeaturesListType = TileFeatureType[]
-
-export interface TileType {
-  isActive: boolean
-  features: TileFeaturesListType 
-}
 
 export const DUNGEON_SIZE = 16
 
