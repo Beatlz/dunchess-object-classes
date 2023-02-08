@@ -1,0 +1,37 @@
+name: Upgrade package.json version
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  upgrade-version:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Upgrade package.json version
+      run: |
+        # Get the current version number from package.json
+        version=$(cat package.json \
+          | grep version \
+          | head -1 \
+          | awk -F: '{ print $2 }' \
+          | sed 's/[",]//g' \
+          | tr -d '[[:space:]]')
+
+        # Increment the patch number of the version
+        new_version=$(echo $version | awk -F. -v OFS=. 'NF==1{print ++$NF}; NF>1{if(length($NF+1)>length($NF))$(NF-1)++; $NF=sprintf("%0*d", length($NF), ($NF+1)%(10^length($NF))); print}')
+
+        # Replace the version number in package.json
+        sed -i "s/$version/$new_version/" package.json
+
+    - name: Commit and push changes
+      uses: ad-m/github-push-action@v0.7.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: main
+        force: true
+        commit_message: Upgrade package.json version to $new_version
