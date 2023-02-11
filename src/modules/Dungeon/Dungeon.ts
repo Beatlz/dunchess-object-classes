@@ -1,4 +1,4 @@
-import type { CoordsType, PieceType, TileType } from "../.."
+import type { CoordsType, DungeonSimplifiedLayoutType, DungeonSimplifiedSquareType, PieceNameType, PieceType, TileType } from "../.."
 import type { DungeonSquareType, DungeonLayoutType } from "../.."
 
 import { COLORS } from "../.."
@@ -104,15 +104,47 @@ export class Dungeon {
 	removeTile(coords: CoordsType) {
 		delete this.layout[`x${coords.x}y${coords.y}`].tile
 	}
+	createSimplifiedLayout(optimize = true): DungeonSimplifiedLayoutType {
+		const layout = { ...this.layout }
+		const simplifiedLayout = !optimize 
+			? Object.values(layout).map((square) => {
+				const simp: DungeonSimplifiedSquareType = {
+					color: square.color,
+					isActive: square.isActive,
+					x: square.x,
+					y: square.y,
+				}
+
+				if (square.piece) simp.piece = <PieceNameType>square.piece.name
+				if (square.tile) simp.tile = square.tile.name
+
+				return simp
+			})
+			: Object.values(layout).reduce((accumulator, currentValue) => {
+				const simp: DungeonSimplifiedSquareType = {
+					color: currentValue.color,
+					isActive: currentValue.isActive,
+					x: currentValue.x,
+					y: currentValue.y,
+				}
+
+				if (currentValue.piece) simp.piece = <PieceNameType>currentValue.piece.name
+				if (currentValue.tile) simp.tile = currentValue.tile.name
+				
+				return accumulator
+			}, [])
+
+		return simplifiedLayout
+	}
 	exportLayoutToJSONStandard(optimize = true): string {
 		const layout = this.layout
-		const JSONStandard = optimize 
+		const standard = optimize 
 			? Object.values(layout).filter(square => square.isActive)
 			: Object.values(layout)
 		
 		return JSON.stringify({
 			layoutSize: this.layoutSize,
-			layout: JSONStandard,
+			layout: standard,
 		})
 	}
 }

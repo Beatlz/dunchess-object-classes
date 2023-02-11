@@ -1,4 +1,4 @@
-import { CoordsType, PieceType, TileType } from ".."
+import { CoordsType, PieceNameType, PieceType, TileType } from ".."
 
 export enum colorsList {
   LIGHT,
@@ -46,5 +46,14 @@ export interface DungeonSquareType extends CoordsType {
   tile?: TileType
   piece?: PieceType
 }
+
+export interface DungeonSimplifiedSquareType extends CoordsType {
+  color: ColorType
+  isActive: boolean
+  tile?: string
+  piece?: PieceNameType
+}
+
+export type DungeonSimplifiedLayoutType = DungeonSimplifiedSquareType[]
 
 export interface DungeonLayoutType { [key: string]: DungeonSquareType }

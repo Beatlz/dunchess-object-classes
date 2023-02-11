@@ -2,13 +2,15 @@ import type { FeatureNameType, TileFeatureType, TileFeaturesListType } from "../
 
 export class Tile {
 	isActive: boolean
+	name: string
 
 	tileFeaturesList: TileFeaturesListType
 
-	constructor(tileFeaturesList?: TileFeaturesListType, isActive?: boolean) {
+	constructor(name: string, tileFeaturesList?: TileFeaturesListType, isActive?: boolean) {
 		this.tileFeaturesList = tileFeaturesList || []
 
 		this.isActive = isActive ?? true
+		this.name = name
 	}
 
 	setIsActive(isActive: boolean) {

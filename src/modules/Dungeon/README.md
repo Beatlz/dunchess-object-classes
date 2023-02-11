@@ -75,6 +75,8 @@ Adds a tile to a dungeon given some chords
 Removes a tile from the dungeon given some coords
 ### Export layout to JSON (`Dungeon.exportLayoutToJSON(<Boolean>) => string`)
 Exports the dungeon layout to a JSON object. It allows a parameter that optimizes the layout by default. The optimized version only saves active tiles. Although what it returns is a string, it still holds this structure:
+### Create simplified layout (`Dungeon.createSimplifiedLayout() => DungeonSimplifiedLayoutType`)
+Returns a simplified version of the dungeon layout (no classes included, but strings that can reconstruct a class).
 ```
 {
   layoutSize: number,
