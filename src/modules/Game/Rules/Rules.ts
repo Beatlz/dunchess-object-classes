@@ -1,4 +1,4 @@
-import type { RulesType } from "../../.."
+import type { RulesType } from "../../../types/RulesTypes"
 
 export class Rules {
 	private rules: RulesType

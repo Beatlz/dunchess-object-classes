@@ -1,5 +1,5 @@
-import { RulesType } from "../.."
-import type { DungeonType } from "../.."
+import type { RulesType } from "../../types/RulesTypes"
+import type { DungeonType } from "../Dungeon/Dungeon"
 
 export class Game {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
