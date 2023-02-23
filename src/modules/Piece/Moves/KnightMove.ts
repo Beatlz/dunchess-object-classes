@@ -1,5 +1,5 @@
-import type { CoordsType } from "../../.."
-import type { GetMovesType } from "../../.."
+import type { CoordsType } from "../../../types/CoordsType"
+import type { GetMovesType } from "../../../types/PieceTypes"
 
 export const knightMove: GetMovesType = (initialSquare: CoordsType, layoutSize: number): CoordsType[] => {
 	const fx = (X: number) => Math.sqrt(5 - Math.pow(X, 2))

@@ -1,5 +1,5 @@
-import { DungeonLayoutType } from ".."
-import { PieceDescriptionType } from ".."
+import type { DungeonLayoutType } from "./DungeonTypes"
+import type { PieceDescriptionType } from "./PieceTypes"
 
 export enum rulesPresetNames {
   DUNCHESS_STANDARD,

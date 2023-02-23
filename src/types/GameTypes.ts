@@ -1,5 +1,6 @@
-import { CoordsType, DungeonSquareType } from ".."
-import { PieceType } from ".."
+import type { CoordsType } from "./CoordsType"
+import type { PieceType } from "../modules/Piece/Piece"
+import type { DungeonSquareType } from "./DungeonTypes"
 export interface GameStateType extends DungeonSquareType {
   piece: PieceType
 }

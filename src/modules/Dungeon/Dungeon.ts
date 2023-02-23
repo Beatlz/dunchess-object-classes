@@ -1,8 +1,14 @@
-import type { CoordsType, DungeonSimplifiedLayoutType, DungeonSimplifiedSquareType, PieceNameType, PieceType, TileType } from "../.."
-import type { DungeonSquareType, DungeonLayoutType } from "../.."
-
-import { COLORS } from "../.."
-import { DUNGEON_SIZE } from "../.."
+import type { CoordsType } from "../../types/CoordsType"
+import type {
+	DungeonSimplifiedLayoutType,
+	DungeonSimplifiedSquareType,
+	DungeonSquareType,
+	DungeonLayoutType,
+} from "../../types/DungeonTypes"
+import type { TileType } from "./Tile/Tile"
+import type { PieceType } from "../Piece/Piece"
+import type { PieceNameType } from "../../types/PieceTypes"
+import { COLORS, DUNGEON_SIZE } from "../../types/constants"
 
 export const isEven = (num: number): boolean => !(num % 2)
 

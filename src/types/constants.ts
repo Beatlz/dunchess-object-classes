@@ -1,5 +1,5 @@
-import { ColorType } from ".."
-import { PieceNameType } from ".."
+import type { ColorType } from "./DungeonTypes"
+import type { PieceNameType } from "./PieceTypes"
 
 // Game
 export const COLORS: { [key: string]: ColorType } = { LIGHT: `LIGHT`, DARK: `DARK` }
@@ -16,3 +16,6 @@ export const PIECE_NAMES: { [key: string]: PieceNameType } = {
 }
 // Initiation
 export const INIT_LIVES = 1
+
+// DUNGEON
+export const DUNGEON_SIZE = 16
