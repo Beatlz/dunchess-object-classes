@@ -16,3 +16,6 @@ export const PIECE_NAMES: { [key: string]: PieceNameType } = {
 }
 // Initiation
 export const INIT_LIVES = 1
+
+// DUNGEON
+export const DUNGEON_SIZE = 16

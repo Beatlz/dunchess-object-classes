@@ -38,8 +38,6 @@ export interface TileFeatureType {
 
 export type TileFeaturesListType = TileFeatureType[]
 
-export const DUNGEON_SIZE = 16
-
 export interface DungeonSquareType extends CoordsType {
   color: ColorType
   isActive: boolean
