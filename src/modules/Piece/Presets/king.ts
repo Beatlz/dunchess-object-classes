@@ -1,8 +1,7 @@
-import type { PieceNameType, PiecePresetDescriptionType } from "../../.."
-
-import { Piece } from "../../.."
-import { kingMove } from "../../.."
-import { PIECE_NAMES } from "../../.."
+import type { PieceNameType, PiecePresetDescriptionType } from "../../../types/PieceTypes"
+import { Piece } from "../../Piece/Piece"
+import { kingMove } from "../Moves/KingMove"
+import { PIECE_NAMES } from "../../../types/constants"
 
 export class King extends Piece {
 	readonly name: PieceNameType = PIECE_NAMES.KING

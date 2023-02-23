@@ -1,8 +1,8 @@
-import type { PiecePresetDescriptionType, PieceNameType } from "../../.."
+import type { PieceNameType, PiecePresetDescriptionType } from "../../../types/PieceTypes"
 
-import { Piece } from "../../.."
-import { rookMove } from "../../.."
-import { PIECE_NAMES } from "../../.."
+import { Piece } from "../../Piece/Piece"
+import { rookMove } from "../Moves/RookMove"
+import { PIECE_NAMES } from "../../../types/constants"
 
 export class Rook extends Piece {
 	readonly name: PieceNameType = PIECE_NAMES.ROOK
