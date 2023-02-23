@@ -1,8 +1,8 @@
-import { INIT_LIVES } from "../.."
+import { INIT_LIVES } from "../../types/constants"
 
-import type { CoordsType } from "../.."
-import type { ColorType } from "../.."
-import type { PieceDescriptionType, GetMovesType, PieceModifyingFunctionType } from "../.."
+import type { CoordsType } from "../../types/CoordsType"
+import type { ColorType } from "../../types/DungeonTypes"
+import type { PieceDescriptionType, GetMovesType, PieceModifyingFunctionType } from "../../types/PieceTypes"
 
 export class Piece {
 	public color: ColorType
