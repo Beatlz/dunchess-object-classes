@@ -9,9 +9,8 @@ import type { TileType } from "./Tile/Tile"
 import type { PieceType } from "../Piece/Piece"
 import type { PieceNameType } from "../../types/PieceTypes"
 import { COLORS, DUNGEON_SIZE } from "../../types/constants"
-import filterMap from "@/utility/filterMap"
-
-export const isEven = (num: number): boolean => !(num % 2)
+import filterMap from "../../utility/filterMap"
+import isEven from "../../utility/isEven"
 
 export class Dungeon {
 	private _layout: DungeonLayoutType
@@ -132,8 +131,8 @@ export class Dungeon {
 
 		return filterMap(
 			Object.values(layout),
-			(square) => square.isActive,
-			(square) => {
+			square => square.isActive,
+			square => {
 				const simp: DungeonSimplifiedSquareType = {
 					x: square.x,
 					y: square.y,
