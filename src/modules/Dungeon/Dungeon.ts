@@ -9,6 +9,7 @@ import type { TileType } from "./Tile/Tile"
 import type { PieceType } from "../Piece/Piece"
 import type { PieceNameType } from "../../types/PieceTypes"
 import { COLORS, DUNGEON_SIZE } from "../../types/constants"
+import filterMap from "@/utility/filterMap"
 
 export const isEven = (num: number): boolean => !(num % 2)
 
@@ -112,13 +113,14 @@ export class Dungeon {
 	}
 	createSimplifiedLayout(optimize = true): DungeonSimplifiedLayoutType {
 		const layout = { ...this.layout }
-		const simplifiedLayout = !optimize 
-			? Object.values(layout).map((square) => {
+
+		if (!optimize) {
+			return Object.values(layout).map((square) => {
 				const simp: DungeonSimplifiedSquareType = {
-					color: square.color,
-					isActive: square.isActive,
 					x: square.x,
 					y: square.y,
+					color: square.color,
+					isActive: square.isActive,
 				}
 
 				if (square.piece) simp.piece = <PieceNameType>square.piece.name
@@ -126,21 +128,25 @@ export class Dungeon {
 
 				return simp
 			})
-			: Object.values(layout).reduce((accumulator, currentValue) => {
+		}
+
+		return filterMap(
+			Object.values(layout),
+			(square) => square.isActive,
+			(square) => {
 				const simp: DungeonSimplifiedSquareType = {
-					color: currentValue.color,
-					isActive: currentValue.isActive,
-					x: currentValue.x,
-					y: currentValue.y,
+					x: square.x,
+					y: square.y,
+					color: square.color,
+					isActive: square.isActive,
 				}
 
-				if (currentValue.piece) simp.piece = <PieceNameType>currentValue.piece.name
-				if (currentValue.tile) simp.tile = currentValue.tile.name
-				
-				return accumulator
-			}, [])
+				if (square.piece) simp.piece = <PieceNameType>square.piece.name
+				if (square.tile) simp.tile = square.tile.name
 
-		return simplifiedLayout
+				return simp
+			}
+		)
 	}
 	exportLayoutToJSONStandard(optimize = true): string {
 		const layout = this.layout
