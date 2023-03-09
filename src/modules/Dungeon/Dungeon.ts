@@ -127,7 +127,7 @@ export class Dungeon {
 					isActive: square.isActive,
 				}
 
-				if (square.piece) simp.piece = <PieceNameType>square.piece.description.name
+				if (square.piece) simp.piece = <PieceNameType>square.piece.name
 				if (square.tile) simp.tile = square.tile.name
 
 				return simp
@@ -145,7 +145,7 @@ export class Dungeon {
 					isActive: square.isActive,
 				}
 
-				if (square.piece) simp.piece = <PieceNameType>square.piece.description.name
+				if (square.piece) simp.piece = <PieceNameType>square.piece.name
 				if (square.tile) simp.tile = square.tile.name
 
 				return simp
