@@ -73,10 +73,7 @@ export interface PieceDescriptionType {
   name: string
 }
 
-export interface PiecePresetDescriptionType {
-  color: ColorType
-  lives?: number
-  // inventory?: ItemType[] ==> Not MVP
-  statusModifiers?: PieceModifyingFunctionType[]
-  name?: string
+export interface PiecePresetType {
+  name: PieceNameType,
+  moves: GetMovesType[]
 }
