@@ -120,17 +120,17 @@ export class Dungeon {
 
 		if (!optimize) {
 			return Object.values(layout).map((square) => {
-				const simp: DungeonSimplifiedSquareType = {
+				const simplifiedSquare: DungeonSimplifiedSquareType = {
 					x: square.x,
 					y: square.y,
 					color: square.color,
 					isActive: square.isActive,
 				}
 
-				if (square.piece) simp.piece = <PieceNameType>square.piece.name
-				if (square.tile) simp.tile = square.tile.name
+				if (square.piece) simplifiedSquare.piece = <PieceNameType>square.piece.name
+				if (square.tile) simplifiedSquare.tile = square.tile.name
 
-				return simp
+				return simplifiedSquare
 			})
 		}
 
@@ -138,17 +138,17 @@ export class Dungeon {
 			Object.values(layout),
 			square => square.isActive,
 			square => {
-				const simp: DungeonSimplifiedSquareType = {
+				const simplifiedSquare: DungeonSimplifiedSquareType = {
 					x: square.x,
 					y: square.y,
 					color: square.color,
 					isActive: square.isActive,
 				}
 
-				if (square.piece) simp.piece = <PieceNameType>square.piece.name
-				if (square.tile) simp.tile = square.tile.name
+				if (square.piece) simplifiedSquare.piece = <PieceNameType>square.piece.name
+				if (square.tile) simplifiedSquare.tile = square.tile.name
 
-				return simp
+				return simplifiedSquare
 			}
 		)
 	}
