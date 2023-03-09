@@ -30,5 +30,3 @@ export class Game {
 		return this._initialState
 	}
 }
-
-export type GameType = Game

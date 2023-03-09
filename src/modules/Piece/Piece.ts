@@ -1,42 +1,56 @@
 import { INIT_LIVES } from "../../types/constants"
 
-import type { CoordsType } from "../../types/CoordsType"
 import type { ColorType } from "../../types/DungeonTypes"
 import type { PieceDescriptionType, GetMovesType, PieceModifyingFunctionType } from "../../types/PieceTypes"
 
 export class Piece {
-	public color: ColorType
-	public moves: GetMovesType[]
-	public lives: number
-	public statusModifiers: PieceModifyingFunctionType[] // TODO: might not be needed. It seems pretty stateless.
-	readonly name: string
+	private _color: ColorType
+	private _moves: GetMovesType[]
+	private _lives: number
+	private _statusModifiers: PieceModifyingFunctionType[]
+	private _name: string
 
 	constructor(pieceDescription: PieceDescriptionType) {
-		this.color = pieceDescription.color
-		this.moves = pieceDescription.moves
-		this.name = pieceDescription.name
-		this.lives = pieceDescription.lives || INIT_LIVES
-		this.statusModifiers = pieceDescription.statusModifiers || []
-
-		if (pieceDescription.lives) this.setLives(pieceDescription.lives)
+		this._color = pieceDescription.color
+		this._moves = pieceDescription.moves
+		this._name = pieceDescription.name
+		this._lives = pieceDescription.lives || INIT_LIVES
+		this._statusModifiers = pieceDescription.statusModifiers || []
 	}
 
-	getColor(): ColorType {
-		return this.color
+	get name(): string {
+		return this._name
+	}
+	set name(name: string) {
+		this._name = name
 	}
 
-	getMoves(): GetMovesType[] {
-		return this.moves
+	get color(): ColorType {
+		return this._color
+	}
+	set color(color: ColorType) {
+		this._color = color
 	}
 
-	getPossibleMoves(initialSquare: CoordsType, layoutSize: number): CoordsType[] {
-		return this.moves.map((move: GetMovesType) => {
-			return move(initialSquare, layoutSize)
-		}).flat()
+	get moves(): GetMovesType[] {
+		return this._moves
+	}
+	set moves(moves: GetMovesType[]) {
+		this._moves = moves
 	}
 
-	setLives(lives: number): void {
-		this.lives = lives
+	get lives(): number {
+		return this._lives
+	}
+	set lives(lives: number) {
+		this._lives = lives
+	}
+
+	get statusModifiers(): PieceModifyingFunctionType[] {
+		return this._statusModifiers
+	}
+	set statusModifiers(statusModifiers: PieceModifyingFunctionType[]) {
+		this._statusModifiers = statusModifiers
 	}
 
 	addMove(move: GetMovesType): void {
@@ -44,16 +58,14 @@ export class Piece {
 	}
 
 	kill(): void {
-		this.setLives(0)
+		this.lives = 0
 	}
 
-	revive(remainingLives = 1): void {
-		this.setLives(remainingLives)
+	revive(lives = 1): void {
+		this.lives = lives
 	}
 
 	isAlive(): boolean {
 		return !!this.lives
 	}
 }
-
-export type PieceType = Piece

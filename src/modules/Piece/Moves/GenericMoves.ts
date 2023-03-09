@@ -18,7 +18,7 @@ export const verticalMove: GetMovesType = (
 	layoutSize: number
 ): CoordsType[] => {
 	const { y } = initialSquare
-	const legalMoves = new Array(layoutSize - 1).map((i, index) => {
+	const legalMoves = new Array(layoutSize - 1).map((_, index) => {
 		return { x: y, y: index }
 	})
 

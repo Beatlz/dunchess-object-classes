@@ -1,20 +1,15 @@
 import type { FeatureNameType, TileFeatureType,TileFeaturesListType } from "../../../types/DungeonTypes"
 
 export class Tile {
-	isActive: boolean
+	// isActive: boolean
 	name: string
 
 	tileFeaturesList: TileFeaturesListType
 
-	constructor(name: string, tileFeaturesList?: TileFeaturesListType, isActive?: boolean) {
+	constructor(name: string, tileFeaturesList?: TileFeaturesListType) {
 		this.tileFeaturesList = tileFeaturesList || []
-
-		this.isActive = isActive ?? true
+		
 		this.name = name
-	}
-
-	setIsActive(isActive: boolean) {
-		this.isActive = isActive
 	}
 
 	setFeatures(tileFeaturesList: TileFeaturesListType): void {
@@ -49,5 +44,3 @@ export class Tile {
 		return !!this.getFeatures().length
 	}
 }
-
-export type TileType = Tile
