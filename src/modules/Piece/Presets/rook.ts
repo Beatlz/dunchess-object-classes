@@ -1,13 +1,14 @@
-import type { PieceNameType, PiecePresetDescriptionType } from "../../../types/PieceTypes"
-
 import { Piece } from "../../Piece/Piece"
 import { rookMove } from "../Moves/RookMove"
 import { PIECE_NAMES } from "../../../types/constants"
+import type { ColorType } from "@/types/DungeonTypes"
 
 export class Rook extends Piece {
-	readonly name: PieceNameType = PIECE_NAMES.ROOK
-
-	constructor (pieceDescription: PiecePresetDescriptionType) {
-		super({ ...pieceDescription, name: PIECE_NAMES.ROOK, moves: [rookMove] })
+	constructor (color: ColorType) {
+		super({
+			color,
+			name: PIECE_NAMES.ROOK,
+			moves: [rookMove],
+		})
 	}
 }
