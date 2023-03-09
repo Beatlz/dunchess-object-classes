@@ -1,12 +1,14 @@
-import type { PieceNameType, PiecePresetDescriptionType } from "../../../types/PieceTypes"
 import { Piece } from "../../Piece/Piece"
 import { PIECE_NAMES } from "../../../types/constants"
 import { bishopMove } from "../Moves/BishopMove"
+import type { ColorType } from "@/types/DungeonTypes"
 
 export class Bishop extends Piece {
-	readonly name: PieceNameType = PIECE_NAMES.BISHOP
-
-	constructor (pieceDescription: PiecePresetDescriptionType) {
-		super({ ...pieceDescription, name: PIECE_NAMES.BISHOP, moves: [bishopMove] })
+	constructor (color: ColorType) {
+		super({
+			color,
+			name: PIECE_NAMES.BISHOP,
+			moves: [bishopMove],
+		})
 	}
 }
