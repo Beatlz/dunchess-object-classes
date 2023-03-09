@@ -1,17 +1,17 @@
 import type { RulesType } from "../../../types/RulesTypes"
 
 export class Rules {
-	private rules: RulesType
+	private _rules: RulesType
   
 	constructor(rules: RulesType) {
-		this.rules = rules
+		this._rules = rules
 	}
 
-	getRules() {
-		return this.rules
+	get rules() {
+		return this._rules
 	}
 
-	setRules(rules: RulesType) {
-		this.rules = { ...this.rules, ...rules }
+	set rules (rules: RulesType) {
+		this._rules = { ...this._rules, ...rules }
 	}
 }

@@ -1,13 +1,14 @@
-import type { PieceNameType, PiecePresetDescriptionType } from "../../../types/PieceTypes"
-
 import { Piece } from "../../Piece/Piece"
 import { queenMove } from "../Moves/QueenMove"
 import { PIECE_NAMES } from "../../../types/constants"
+import { ColorType } from "@/types/DungeonTypes"
 
 export class Queen extends Piece {
-	readonly name: PieceNameType = PIECE_NAMES.QUEEN
-
-	constructor (pieceDescription: PiecePresetDescriptionType) {
-		super({ ...pieceDescription, name: PIECE_NAMES.QUEEN, moves: [queenMove] })
+	constructor (color: ColorType) {
+		super({
+			color,
+			name: PIECE_NAMES.KNIGHT,
+			moves: [queenMove],
+		})
 	}
 }

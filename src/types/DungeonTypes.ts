@@ -1,7 +1,7 @@
 import type { CoordsType } from "./CoordsType"
 import type { PieceNameType } from "./PieceTypes"
-import type { PieceType } from "../modules/Piece/Piece"
-import type { TileType } from "../modules/Dungeon/Tile/Tile"
+import type { Piece } from "../modules/Piece/Piece"
+import type { Tile } from "../modules/Dungeon/Tile/Tile"
 
 export enum colorsList {
   LIGHT,
@@ -44,8 +44,8 @@ export type TileFeaturesListType = TileFeatureType[]
 export interface DungeonSquareType extends CoordsType {
   color: ColorType
   isActive: boolean
-  tile?: TileType
-  piece?: PieceType
+  tile?: Tile
+  piece?: Piece
 }
 
 export interface DungeonSimplifiedSquareType extends CoordsType {

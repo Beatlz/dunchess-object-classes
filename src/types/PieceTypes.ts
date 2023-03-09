@@ -47,7 +47,7 @@ export type statusModifierNameType = keyof typeof statusModifierName
 
 export type MoveType = CoordsType[]
 
-export type GetMovesType = (initialSquare: CoordsType, layoutSize: number) => MoveType
+export type GetMovesType = (initialSquare: CoordsType, layoutSize: number) => CoordsType[]
 
 export interface PieceInitOptionsType {
   lives: number
