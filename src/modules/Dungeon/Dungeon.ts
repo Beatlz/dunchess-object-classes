@@ -6,7 +6,6 @@ import type {
 } from "../../types/DungeonTypes"
 import { Tile } from "./Tile/Tile"
 import { Piece } from "../Piece/Piece"
-import type { PieceNameType } from "../../types/PieceTypes"
 import { COLORS, DUNGEON_SIZE } from "../../types/constants"
 import filterMap from "../../utility/filterMap"
 import isEven from "../../utility/isEven"
@@ -125,7 +124,7 @@ export class Dungeon {
 					isActive: square.isActive,
 				}
 
-				if (square.piece) simplifiedSquare.piece = <PieceNameType>square.piece.name
+				if (square.piece) simplifiedSquare.piece = square.piece.description
 				if (square.tile) simplifiedSquare.tile = square.tile.name
 
 				return simplifiedSquare
@@ -143,12 +142,34 @@ export class Dungeon {
 					isActive: square.isActive,
 				}
 
-				if (square.piece) simplifiedSquare.piece = <PieceNameType>square.piece.name
+				if (square.piece) simplifiedSquare.piece = square.piece.description
 				if (square.tile) simplifiedSquare.tile = square.tile.name
 
 				return simplifiedSquare
 			}
 		)
+	}
+	unpackSimplifiedLayout(simplifiedLayout: DungeonSimplifiedSquareType[]): DungeonLayoutType {
+		const layout: DungeonLayoutType = {}
+		
+		simplifiedLayout.forEach(simplifiedSquare => {
+			const { x, y, isActive, color } = simplifiedSquare
+			const key = this.coordsToSquareKey({ x, y })
+			layout[key] = {
+				x,
+				y,
+				isActive,
+				color,
+			}
+
+			if (simplifiedSquare.tile) layout[key].tile = new Tile(simplifiedSquare.tile)
+			if (simplifiedSquare.piece) {
+				const piece = simplifiedSquare.piece
+				layout[key].piece = new Piece(piece)
+			}
+		})
+
+		return layout
 	}
 	exportLayoutToJSONStandard(optimize = true): string {
 		return JSON.stringify(this.createSimplifiedLayout(optimize))
