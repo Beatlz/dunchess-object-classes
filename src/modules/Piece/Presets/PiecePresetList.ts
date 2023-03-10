@@ -8,41 +8,41 @@ import { pawnMove } from "../Moves/PawnMove"
 import { queenMove } from "../Moves/QueenMove"
 
 
-export const ROOK: PiecePresetType = {
+export const rookPreset: PiecePresetType = {
 	name: PIECE_NAMES.ROOK,
 	moves: [queenMove],
 }
 
-export const KNIGHT: PiecePresetType = {
+export const knightPreset: PiecePresetType = {
 	name: PIECE_NAMES.KNIGHT,
 	moves: [knightMove],
 }
 
-export const BISHOP: PiecePresetType = {
+export const bishopPreset: PiecePresetType = {
 	name: PIECE_NAMES.BISHOP,
 	moves: [bishopMove],
 }
 
-export const QUEEN: PiecePresetType = {
+export const queenPreset: PiecePresetType = {
 	name: PIECE_NAMES.QUEEN,
 	moves: [queenMove],
 }
 
-export const KING: PiecePresetType = {
+export const kingPreset: PiecePresetType = {
 	name: PIECE_NAMES.KING,
 	moves: [kingMove],
 }
 
-export const PAWN: PiecePresetType = {
+export const pawnPreset: PiecePresetType = {
 	name: PIECE_NAMES.PAWN,
 	moves: [pawnMove],
 }
 
 export const piecePresets: { [key: string]: PiecePresetType } = {
-	ROOK,
-	KNIGHT,
-	BISHOP,
-	QUEEN,
-	KING,
-	PAWN,
+	rookPreset,
+	knightPreset,
+	bishopPreset,
+	queenPreset,
+	kingPreset,
+	pawnPreset,
 }
