@@ -1,24 +1,21 @@
 import type { CoordsType } from "../../types/CoordsType"
 import type {
-	DungeonSimplifiedLayoutType,
 	DungeonSimplifiedSquareType,
 	DungeonSquareType,
 	DungeonLayoutType,
 } from "../../types/DungeonTypes"
-import type { Tile } from "./Tile/Tile"
-import type { Piece } from "../Piece/Piece"
+import { Tile } from "./Tile/Tile"
+import { Piece } from "../Piece/Piece"
 import type { PieceNameType } from "../../types/PieceTypes"
 import { COLORS, DUNGEON_SIZE } from "../../types/constants"
 import filterMap from "../../utility/filterMap"
 import isEven from "../../utility/isEven"
 
 export class Dungeon {
-	private _layout: DungeonLayoutType
+	private _layout = this.createLayout(DUNGEON_SIZE)
 
-	constructor (layoutSize?: number) {
-		this._layout = layoutSize
-			? this.createLayout(layoutSize)
-			: this.createLayout(DUNGEON_SIZE)
+	constructor (layout?: DungeonLayoutType) {
+		if (layout) this._layout = layout
 	}
 
 	set layout(layout: DungeonLayoutType) {
@@ -29,9 +26,17 @@ export class Dungeon {
 		return this._layout
 	}
 
-	square({ x, y }: CoordsType) {
-		return this.layout[`x${x}y${y}`]
+	coordsToSquareKey({ x, y }: CoordsType): string {
+		return `x${x}y${y}`
 	}
+
+	getSquare({ x, y }: CoordsType): DungeonSquareType {
+		return this.layout[this.coordsToSquareKey({ x, y })]
+	}
+	setSquare({ x, y }: CoordsType, square: DungeonSquareType) {
+		this.layout[this.coordsToSquareKey({ x, y })] = square
+	}
+
 
 	createLayout(layoutSize: number): DungeonLayoutType {
 		const layout: DungeonLayoutType = {}
@@ -76,25 +81,18 @@ export class Dungeon {
 		}
 	}
 	hasSquare(coords: CoordsType): boolean {
-		return !!this.square(coords)
-	}
-	setSquare(coords: CoordsType, square: DungeonSquareType): DungeonSquareType {
-		let _square = this.square(coords)
-		
-		_square = square
-
-		return _square
+		return !!this.getSquare(coords)
 	}
 	activateSquare(coords: CoordsType): void {
-		this.square(coords).isActive = true
+		this.getSquare(coords).isActive = true
 	}
 	deactivateSquare(coords: CoordsType): void {
-		this.square(coords).isActive = false
+		this.getSquare(coords).isActive = false
 	}
 	toggleSquare(coords: CoordsType): boolean {
-		this.square(coords).isActive = !this.square(coords).isActive
+		this.getSquare(coords).isActive = !this.getSquare(coords).isActive
 
-		return this.square(coords).isActive
+		return this.getSquare(coords).isActive
 	}
 	layoutSize(as2D?: `2D`): number {
 		const totalSquares = Object.keys(this.layout).length
@@ -104,18 +102,18 @@ export class Dungeon {
 			: totalSquares
 	}
 	addPiece(piece: Piece, coords: CoordsType) {
-		this.square(coords).piece = piece
+		this.getSquare(coords).piece = piece
 	}
 	removePiece(coords: CoordsType) {
-		delete this.square(coords).piece
+		delete this.getSquare(coords).piece
 	}
 	addTile(tile: Tile, coords: CoordsType) {
-		this.square(coords).tile = tile
+		this.getSquare(coords).tile = tile
 	}
 	removeTile(coords: CoordsType) {
-		delete this.square(coords).tile
+		delete this.getSquare(coords).tile
 	}
-	createSimplifiedLayout(optimize = true): DungeonSimplifiedLayoutType {
+	createSimplifiedLayout(optimize = true): DungeonSimplifiedSquareType[] {
 		const layout = { ...this.layout }
 
 		if (!optimize) {
@@ -153,16 +151,6 @@ export class Dungeon {
 		)
 	}
 	exportLayoutToJSONStandard(optimize = true): string {
-		const layout = this.layout
-		const standard = optimize 
-			? Object.values(layout).filter(square => square.isActive)
-			: Object.values(layout)
-		
-		return JSON.stringify({
-			layoutSize: this.layoutSize,
-			layout: standard,
-		})
+		return JSON.stringify(this.createSimplifiedLayout(optimize))
 	}
 }
-
-export type DungeonType = Dungeon
