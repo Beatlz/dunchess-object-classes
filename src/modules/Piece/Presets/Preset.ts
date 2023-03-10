@@ -1,5 +1,5 @@
 import { PieceNameType, PiecePresetType } from "@/types/PieceTypes"
-import { presets } from "./PieceList"
+import { presets } from "./PiecePresetList"
 
 export class Preset {
 	private _preset: PiecePresetType

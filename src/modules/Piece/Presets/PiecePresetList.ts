@@ -1,10 +1,12 @@
+
+import type { PiecePresetType } from "@/types/PieceTypes"
 import { PIECE_NAMES } from "../../../types/constants"
 import { bishopMove } from "../Moves/BishopMove"
 import { kingMove } from "../Moves/KingMove"
 import { knightMove } from "../Moves/KnightMove"
 import { pawnMove } from "../Moves/PawnMove"
 import { queenMove } from "../Moves/QueenMove"
-import type { PiecePresetType } from "@/types/PieceTypes"
+
 
 export const ROOK: PiecePresetType = {
 	name: PIECE_NAMES.ROOK,

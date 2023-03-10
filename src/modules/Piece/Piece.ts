@@ -1,8 +1,7 @@
 import { INIT_LIVES } from "../../types/constants"
 
 import type { ColorType } from "../../types/DungeonTypes"
-import type { PieceDescriptionType, GetMovesType, PieceModifyingFunctionType, PieceNameType } from "../../types/PieceTypes"
-import { Preset } from "./Presets/Preset"
+import type { PieceDescriptionType, GetMovesType, PieceModifyingFunctionType } from "../../types/PieceTypes"
 
 export class Piece {
 	private _color: ColorType
@@ -11,19 +10,12 @@ export class Piece {
 	private _statusModifiers: PieceModifyingFunctionType[]
 	private _name: string
 
-	constructor(pieceDescription: PieceDescriptionType, piecePresetName?: PieceNameType) {
+	constructor(pieceDescription: PieceDescriptionType) {
 		this._color = pieceDescription.color
 		this._moves = pieceDescription.moves
 		this._name = pieceDescription.name
 		this._lives = pieceDescription.lives || INIT_LIVES
 		this._statusModifiers = pieceDescription.statusModifiers || []
-	
-		if (piecePresetName) {
-			const preset = new Preset(piecePresetName)
-
-			this._name = preset.piece.name
-			this._moves = preset.piece.moves
-		}
 	}
 
 	get name(): string {
