@@ -1,14 +1,15 @@
-import { PieceNameType, PiecePresetType } from "@/types/PieceTypes"
+import { ColorType } from "@/types/DungeonTypes"
+import { PieceDescriptionType, PieceNameType } from "@/types/PieceTypes"
 import { piecePresets } from "./PiecePresetList"
 
 export class Preset {
-	private _preset: PiecePresetType
+	private _description: PieceDescriptionType
 
-	constructor(pieceName: PieceNameType) {
-		this._preset = piecePresets[pieceName]
+	constructor(color: ColorType, pieceName: PieceNameType) {
+		this._description = { color, ...piecePresets[pieceName] }
 	}
 
-	get piece(): PiecePresetType {
-		return this._preset
+	get description(): PieceDescriptionType {
+		return this._description
 	}
 }
