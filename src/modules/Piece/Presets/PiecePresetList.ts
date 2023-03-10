@@ -38,7 +38,7 @@ export const PAWN: PiecePresetType = {
 	moves: [pawnMove],
 }
 
-export const presets: { [key: string]: PiecePresetType } = {
+export const piecePresets: { [key: string]: PiecePresetType } = {
 	ROOK,
 	KNIGHT,
 	BISHOP,

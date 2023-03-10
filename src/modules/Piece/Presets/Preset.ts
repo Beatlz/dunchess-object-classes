@@ -1,11 +1,11 @@
 import { PieceNameType, PiecePresetType } from "@/types/PieceTypes"
-import { presets } from "./PiecePresetList"
+import { piecePresets } from "./PiecePresetList"
 
 export class Preset {
 	private _preset: PiecePresetType
 
 	constructor(pieceName: PieceNameType) {
-		this._preset = presets[pieceName]
+		this._preset = piecePresets[pieceName]
 	}
 
 	get piece(): PiecePresetType {
