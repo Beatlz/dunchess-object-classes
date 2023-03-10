@@ -72,6 +72,7 @@ export class Dungeon {
 	clearLayout(): void {
 		this.layout = {}
 	}
+
 	deleteSquare(coords: string): void {
 		const descriptor = Object.getOwnPropertyDescriptor(this.layout, coords)
 
@@ -79,20 +80,25 @@ export class Dungeon {
 			delete descriptor.value
 		}
 	}
+
 	hasSquare(coords: CoordsType): boolean {
 		return !!this.getSquare(coords)
 	}
+
 	activateSquare(coords: CoordsType): void {
 		this.getSquare(coords).isActive = true
 	}
+
 	deactivateSquare(coords: CoordsType): void {
 		this.getSquare(coords).isActive = false
 	}
+	
 	toggleSquare(coords: CoordsType): boolean {
 		this.getSquare(coords).isActive = !this.getSquare(coords).isActive
 
 		return this.getSquare(coords).isActive
 	}
+
 	layoutSize(as2D?: `2D`): number {
 		const totalSquares = Object.keys(this.layout).length
 
@@ -100,18 +106,23 @@ export class Dungeon {
 			? Math.sqrt(totalSquares)
 			: totalSquares
 	}
+
 	addPiece(piece: Piece, coords: CoordsType) {
 		this.getSquare(coords).piece = piece
 	}
+
 	removePiece(coords: CoordsType) {
 		delete this.getSquare(coords).piece
 	}
+
 	addTile(tile: Tile, coords: CoordsType) {
 		this.getSquare(coords).tile = tile
 	}
+	
 	removeTile(coords: CoordsType) {
 		delete this.getSquare(coords).tile
 	}
+
 	createSimplifiedLayout(optimize = true): DungeonSimplifiedSquareType[] {
 		const layout = { ...this.layout }
 
@@ -149,6 +160,7 @@ export class Dungeon {
 			}
 		)
 	}
+
 	unpackSimplifiedLayout(simplifiedLayout: DungeonSimplifiedSquareType[]): DungeonLayoutType {
 		const layout: DungeonLayoutType = {}
 		
@@ -171,6 +183,7 @@ export class Dungeon {
 
 		return layout
 	}
+	
 	exportLayoutToJSONStandard(optimize = true): string {
 		return JSON.stringify(this.createSimplifiedLayout(optimize))
 	}
