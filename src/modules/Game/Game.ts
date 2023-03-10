@@ -1,13 +1,13 @@
 import type { RulesType } from "../../types/RulesTypes"
-import type { DungeonType } from "../Dungeon/Dungeon"
+import { Dungeon } from "../Dungeon/Dungeon"
 
 export class Game {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	private _rules: any = []
-	private _dungeon: DungeonType
-	private _initialState: DungeonType
+	private _dungeon: Dungeon
+	private _initialState: Dungeon
 
-	constructor(dungeon: DungeonType) {
+	constructor(dungeon: Dungeon) {
 		this._dungeon = dungeon
 		this._initialState = dungeon
 	}
@@ -19,14 +19,14 @@ export class Game {
 		this._rules = rules
 	}
 
-	get dungeon(): DungeonType {
+	get dungeon(): Dungeon {
 		return this._dungeon
 	}
-	set dungeon(dungeon: DungeonType) {
+	set dungeon(dungeon: Dungeon) {
 		this._dungeon = dungeon
 	}
 
-	get initialState(): DungeonType {
+	get initialState(): Dungeon {
 		return this._initialState
 	}
 }
