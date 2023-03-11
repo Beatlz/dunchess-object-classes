@@ -45,7 +45,7 @@ export const deserializeLayout = (simplifiedLayout: DungeonSimplifiedSquareType[
 	const layout: DungeonLayoutType = {}
   
 	simplifiedLayout.forEach(simplifiedSquare => {
-		const { x, y, isActive, color } = simplifiedSquare
+		const { x, y, isActive, color, tile, piece } = simplifiedSquare
 		const key = serializeKey({ x, y })
     
 		layout[key] = new Square({
@@ -55,8 +55,8 @@ export const deserializeLayout = (simplifiedLayout: DungeonSimplifiedSquareType[
 			color,
 		})
 
-		if (simplifiedSquare.tile) layout[key].description.tile = new Tile(simplifiedSquare.tile)
-		if (simplifiedSquare.piece) layout[key].description.piece = new Piece(simplifiedSquare.piece)
+		if (tile) layout[key].description.tile = new Tile(tile)
+		if (piece) layout[key].description.piece = new Piece(piece)
 	})
 
 	return layout
