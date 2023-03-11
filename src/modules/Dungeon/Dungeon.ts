@@ -35,12 +35,17 @@ export class Dungeon {
 	}
 
 	getSquare({ x, y }: CoordsType): Square {
-		return this.layout[serializeKey({ x, y })]
+		const key = serializeKey({ x, y })
+		
+		return this.layout[key]
 	}
-	setSquare({ x, y }: CoordsType, square: SquareDescriptionType) {
-		this.layout[serializeKey({ x, y })] = new Square(square)
+	setSquare(square: SquareDescriptionType) {
+		const { x, y } = square
+		const key = serializeKey({ x, y })
+		
+		this.layout[key] = new Square(square)
 	}
-	hasSquare(coords: CoordsType): boolean {
-		return !!this.getSquare(coords)
+	hasSquare({ x, y }: CoordsType): boolean {
+		return !!this.getSquare({ x, y })
 	}
 }
