@@ -1,5 +1,5 @@
 import { filterMap } from "../../utility/filterMap"
-import { DungeonLayoutType, DungeonSimplifiedSquareType } from "@/types/DungeonTypes"
+import { DungeonLayoutType, DungeonSimplifiedSquareType } from "../../types/DungeonTypes"
 import { serializeKey } from "../../utility/serializeKey"
 import { Square } from "./Square/Square"
 import { Tile } from "./Tile/Tile"

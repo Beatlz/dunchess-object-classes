@@ -1,5 +1,5 @@
 import { COLORS } from "../../types/constants"
-import { DungeonLayoutType } from "@/types/DungeonTypes"
+import { DungeonLayoutType } from "../../types/DungeonTypes"
 import { isEven } from "../../utility/isEven"
 import { Square } from "./Square/Square"
 
