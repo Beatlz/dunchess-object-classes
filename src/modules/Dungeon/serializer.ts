@@ -56,10 +56,7 @@ export const deserializeLayout = (simplifiedLayout: DungeonSimplifiedSquareType[
 		})
 
 		if (simplifiedSquare.tile) layout[key].description.tile = new Tile(simplifiedSquare.tile)
-		if (simplifiedSquare.piece) {
-			const piece = simplifiedSquare.piece
-			layout[key].description.piece = new Piece(piece)
-		}
+		if (simplifiedSquare.piece) layout[key].description.piece = new Piece(simplifiedSquare.piece)
 	})
 
 	return layout
