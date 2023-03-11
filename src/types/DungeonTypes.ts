@@ -1,5 +1,5 @@
 import type { CoordsType } from "./CoordsType"
-import type { PieceDescriptionType } from "./PieceTypes"
+import type { PieceNameType } from "./PieceTypes"
 import type { Piece } from "../modules/Piece/Piece"
 import type { Tile } from "../modules/Dungeon/Tile/Tile"
 import { Square } from "../modules/Dungeon/Square/Square"
@@ -53,7 +53,7 @@ export interface DungeonSimplifiedSquareType extends CoordsType {
   color: ColorType
   isActive: boolean
   tile?: string
-  piece?: PieceDescriptionType
+  piece?: { name: PieceNameType, color: ColorType }
 }
 
 export interface DungeonLayoutType { [key: string]: Square }

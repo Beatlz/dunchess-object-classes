@@ -70,7 +70,7 @@ export interface PieceDescriptionType {
   lives?: number
   // inventory?: ItemType[] ==> Not MVP
   statusModifiers?: PieceModifyingFunctionType[]
-  name: string
+  name: PieceNameType
 }
 
 export interface PiecePresetType {
