@@ -16,10 +16,6 @@ export class Square {
 		this._description = square
 	}
 
-	getProp<K extends keyof SquareDescriptionType>(prop: K): SquareDescriptionType[K] {
-		return this.description[prop]
-	}
-
 	activateSquare(): void {
 		this.description.isActive = true
 	}

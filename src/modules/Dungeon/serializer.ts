@@ -9,14 +9,14 @@ export const serializeLayout = (layout: DungeonLayoutType, optimize = true): Dun
 	if (!optimize) {
 		return Object.values(layout).map((square) => {
 			const simplifiedSquare: DungeonSimplifiedSquareType = {
-				x: square.getProp(`x`),
-				y: square.getProp(`y`),
-				color: square.getProp(`color`),
-				isActive: square.getProp(`isActive`),
+				x: square.description.x,
+				y: square.description.y,
+				color: square.description.color,
+				isActive: square.description.isActive,
 			}
 
-			if (square.getProp(`piece`)) simplifiedSquare.piece = square.getProp(`piece`)?.description
-			if (square.getProp(`tile`)) simplifiedSquare.tile = square.getProp(`tile`)?.name
+			if (square.description.piece) simplifiedSquare.piece = square.description.piece?.description
+			if (square.description.tile) simplifiedSquare.tile = square.description.tile?.name
 
 			return simplifiedSquare
 		})
@@ -24,17 +24,17 @@ export const serializeLayout = (layout: DungeonLayoutType, optimize = true): Dun
 
 	return filterMap(
 		Object.values(layout),
-		square => square.getProp(`isActive`),
+		square => square.description.isActive,
 		square => {
 			const simplifiedSquare: DungeonSimplifiedSquareType = {
-				x: square.getProp(`x`),
-				y: square.getProp(`y`),
-				color: square.getProp(`color`),
-				isActive: square.getProp(`isActive`),
+				x: square.description.x,
+				y: square.description.y,
+				color: square.description.color,
+				isActive: square.description.isActive,
 			}
 
-			if (square.getProp(`piece`)) simplifiedSquare.piece = square.getProp(`piece`)?.description
-			if (square.getProp(`tile`)) simplifiedSquare.tile = square.getProp(`tile`)?.name
+			if (square.description.piece) simplifiedSquare.piece = square.description.piece?.description
+			if (square.description.tile) simplifiedSquare.tile = square.description.tile?.name
 
 			return simplifiedSquare
 		}
