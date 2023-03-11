@@ -1,11 +1,11 @@
 import type { CoordsType } from "./CoordsType"
-import type { PieceType } from "../modules/Piece/Piece"
-import type { DungeonSquareType } from "./DungeonTypes"
-export interface GameStateType extends DungeonSquareType {
-  piece: PieceType
+import type { SquareDescriptionType } from "./DungeonTypes"
+import { Piece } from "../modules/Piece/Piece"
+export interface GameStateType extends SquareDescriptionType {
+  piece: Piece
 }
 export interface GameActionType {
-  piece: PieceType
+  piece: Piece
   moves: CoordsType[]
   attacks: [] // Some function that debuffs another piece
   buffs: [] // Some function that describes what a buff does
