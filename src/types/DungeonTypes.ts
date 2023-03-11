@@ -2,6 +2,7 @@ import type { CoordsType } from "./CoordsType"
 import type { PieceDescriptionType } from "./PieceTypes"
 import type { Piece } from "../modules/Piece/Piece"
 import type { Tile } from "../modules/Dungeon/Tile/Tile"
+import { Square } from "@/modules/Dungeon/Square/Square"
 
 export enum colorsList {
   LIGHT,
@@ -55,4 +56,4 @@ export interface DungeonSimplifiedSquareType extends CoordsType {
   piece?: PieceDescriptionType
 }
 
-export interface DungeonLayoutType { [key: string]: DungeonSquareType }
+export interface DungeonLayoutType { [key: string]: Square }
