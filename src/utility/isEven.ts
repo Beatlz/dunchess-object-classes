@@ -1,3 +1,1 @@
-const isEven = (n: number) => !(n % 2)
-
-export default isEven
+export const isEven = (n: number) => !(n % 2)
