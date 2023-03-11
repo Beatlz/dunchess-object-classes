@@ -9,6 +9,7 @@ export * from "./types/RulesTypes"
 // // Dungeon
 export * from "./modules/Dungeon/Dungeon"
 export * from "./modules/Dungeon/serializer"
+export * from "./modules/Dungeon/createLayout"
 // // // Square
 export * from "./modules/Dungeon/Square/Square"
 // // // Tile
