@@ -4,6 +4,7 @@ import { serializeKey } from "../../utility/serializeKey"
 import { Square } from "./Square/Square"
 import { Tile } from "./Tile/Tile"
 import { Piece } from "../Piece/Piece"
+import PresetMoves from "../Piece/Moves/PresetMoves"
 
 export const serializeLayout = (layout: DungeonLayoutType, optimize = true): DungeonSimplifiedSquareType[] => {
 	if (!optimize) {
@@ -15,7 +16,12 @@ export const serializeLayout = (layout: DungeonLayoutType, optimize = true): Dun
 				isActive: square.description.isActive,
 			}
 
-			if (square.description.piece) simplifiedSquare.piece = square.description.piece?.description
+			if (square.description.piece) {
+				simplifiedSquare.piece = {
+					name: square.description.piece?.description.name,
+					color: square.description.piece?.description.color,
+				}
+			}
 			if (square.description.tile) simplifiedSquare.tile = square.description.tile?.name
 
 			return simplifiedSquare
@@ -33,7 +39,12 @@ export const serializeLayout = (layout: DungeonLayoutType, optimize = true): Dun
 				isActive: square.description.isActive,
 			}
 
-			if (square.description.piece) simplifiedSquare.piece = square.description.piece?.description
+			if (square.description.piece) {
+				simplifiedSquare.piece = {
+					name: square.description.piece?.description.name,
+					color: square.description.piece?.description.color,
+				}
+			}
 			if (square.description.tile) simplifiedSquare.tile = square.description.tile?.name
 
 			return simplifiedSquare
@@ -56,7 +67,7 @@ export const deserializeLayout = (simplifiedLayout: DungeonSimplifiedSquareType[
 		})
 
 		if (tile) layout[key].description.tile = new Tile(tile)
-		if (piece) layout[key].description.piece = new Piece(piece)
+		if (piece) layout[key].description.piece = new Piece({ ...piece, moves: [PresetMoves[piece.name]] })
 	})
 
 	return layout
