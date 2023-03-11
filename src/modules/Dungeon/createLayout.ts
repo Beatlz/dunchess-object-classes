@@ -1,6 +1,6 @@
-import { COLORS } from "@/types/constants"
+import { COLORS } from "../../types/constants"
 import { DungeonLayoutType } from "@/types/DungeonTypes"
-import { isEven } from "@/utility/isEven"
+import { isEven } from "../../utility/isEven"
 import { Square } from "./Square/Square"
 
 export const createLayout = (layoutSize: number): DungeonLayoutType => {

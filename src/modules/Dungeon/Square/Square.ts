@@ -1,5 +1,5 @@
-import { Piece } from "@/modules/Piece/Piece"
-import { SquareDescriptionType } from "@/types/DungeonTypes"
+import { Piece } from "../../../modules/Piece/Piece"
+import { SquareDescriptionType } from "../../../types/DungeonTypes"
 import { Tile } from "../Tile/Tile"
 
 export class Square {
