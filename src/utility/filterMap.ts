@@ -1,7 +1,7 @@
 type FilterFnType<T, U> = (value: T, index?: number, array?: T[]) => U | boolean;
 type MapFnType<T, U> = (value: T, index: number, array: T[]) => U;
 
-const filterMap = <T, U>(
+export const filterMap = <T, U>(
 	array: T[],
 	filterFn: FilterFnType<T, U>,
 	mapFn: MapFnType<T, U>
@@ -16,4 +16,3 @@ const filterMap = <T, U>(
 	}, [])
 }
 
-export default filterMap

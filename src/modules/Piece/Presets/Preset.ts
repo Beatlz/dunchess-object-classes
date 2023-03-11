@@ -1,5 +1,5 @@
-import { ColorType } from "@/types/DungeonTypes"
-import { PieceDescriptionType, PieceNameType } from "@/types/PieceTypes"
+import { ColorType } from "../../../types/DungeonTypes"
+import { PieceDescriptionType, PieceNameType } from "../../../types/PieceTypes"
 import { piecePresets } from "./PiecePresetList"
 
 export class Preset {

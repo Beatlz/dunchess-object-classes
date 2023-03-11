@@ -1,5 +1,5 @@
 
-import type { PiecePresetType } from "@/types/PieceTypes"
+import type { PiecePresetType } from "../../../types/PieceTypes"
 import { PIECE_NAMES } from "../../../types/constants"
 import { bishopMove } from "../Moves/BishopMove"
 import { kingMove } from "../Moves/KingMove"
