@@ -5,7 +5,7 @@ import type {
 } from "../../types/DungeonTypes"
 import { DUNGEON_SIZE } from "../../types/constants"
 import { Square } from "./Square/Square"
-import { serializeKey } from "@/utility/serializeKey"
+import { serializeKey } from "../../utility/serializeKey"
 import { createLayout } from "./createLayout"
 
 export class Dungeon {
