@@ -28,6 +28,7 @@ export * from "./modules/Piece/Moves/KnightMove"
 export * from "./modules/Piece/Moves/QueenMove"
 export * from "./modules/Piece/Moves/KingMove"
 export * from "./modules/Piece/Moves/PawnMove"
+export * from "./modules/Piece/Moves/PresetMoves"
 // // // Presets
 export * from "./modules/Piece/Presets/PiecePresetList"
 export * from "./modules/Piece/Presets/Preset"
