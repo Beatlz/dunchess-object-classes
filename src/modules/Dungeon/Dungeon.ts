@@ -1,6 +1,6 @@
 import type { CoordsType } from "../../types/CoordsType"
 import type {
-	DungeonSquareType,
+	SquareDescriptionType,
 	DungeonLayoutType,
 } from "../../types/DungeonTypes"
 import { COLORS, DUNGEON_SIZE } from "../../types/constants"
@@ -69,7 +69,7 @@ export class Dungeon {
 	getSquare({ x, y }: CoordsType): Square {
 		return this.layout[serializeKey({ x, y })]
 	}
-	setSquare({ x, y }: CoordsType, square: DungeonSquareType) {
+	setSquare({ x, y }: CoordsType, square: SquareDescriptionType) {
 		this.layout[serializeKey({ x, y })] = new Square(square)
 	}
 	hasSquare(coords: CoordsType): boolean {

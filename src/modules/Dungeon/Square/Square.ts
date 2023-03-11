@@ -1,22 +1,22 @@
 import { Piece } from "@/modules/Piece/Piece"
-import { DungeonSquareType } from "@/types/DungeonTypes"
+import { SquareDescriptionType } from "@/types/DungeonTypes"
 import { Tile } from "../Tile/Tile"
 
 export class Square {
-	private _description: DungeonSquareType
+	private _description: SquareDescriptionType
 
-	constructor(description: DungeonSquareType) {
+	constructor(description: SquareDescriptionType) {
 		this._description = description
 	}
 
-	get description(): DungeonSquareType {
+	get description(): SquareDescriptionType {
 		return this._description
 	}
-	set description(square: DungeonSquareType) {
+	set description(square: SquareDescriptionType) {
 		this._description = square
 	}
 
-	getProp<K extends keyof DungeonSquareType>(prop: K): DungeonSquareType[K] {
+	getProp<K extends keyof SquareDescriptionType>(prop: K): SquareDescriptionType[K] {
 		return this.description[prop]
 	}
 

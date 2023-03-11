@@ -42,7 +42,7 @@ export interface TileFeatureType {
 
 export type TileFeaturesListType = TileFeatureType[]
 
-export interface DungeonSquareType extends CoordsType {
+export interface SquareDescriptionType extends CoordsType {
   color: ColorType
   isActive: boolean
   tile?: Tile
