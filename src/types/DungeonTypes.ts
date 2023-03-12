@@ -52,7 +52,7 @@ export interface SquareDescriptionType extends CoordsType {
 export interface DungeonSimplifiedSquareType extends CoordsType {
   color: ColorType
   isActive: boolean
-  tile?: string
+  tile?: { name: string }
   piece?: { name: PieceNameType, color: ColorType }
 }
 
