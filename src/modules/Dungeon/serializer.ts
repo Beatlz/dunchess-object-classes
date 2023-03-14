@@ -5,6 +5,8 @@ import { Square } from "./Square/Square"
 import { Tile } from "./Tile/Tile"
 import { Piece } from "../Piece/Piece"
 import PresetMoves from "../Piece/Moves/PresetMoves"
+import { Dungeon } from "./Dungeon"
+import { createLayout } from "./createLayout"
 
 export const serializeLayout = (layout: DungeonLayoutType, optimize = true): DungeonSimplifiedSquareType[] => {
 	if (!optimize) {
@@ -52,8 +54,9 @@ export const serializeLayout = (layout: DungeonLayoutType, optimize = true): Dun
 	)
 }
 
-export const deserializeLayout = (simplifiedLayout: DungeonSimplifiedSquareType[]): DungeonLayoutType => {
-	const layout: DungeonLayoutType = {}
+export const deserializeLayout = (simplifiedLayout: DungeonSimplifiedSquareType[], layoutSize: number): DungeonLayoutType => {
+	const dungeon = new Dungeon(createLayout(layoutSize))
+	const layout = dungeon.layout
   
 	simplifiedLayout.forEach(simplifiedSquare => {
 		const { x, y, isActive, color, tile, piece } = simplifiedSquare
