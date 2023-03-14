@@ -61,6 +61,8 @@ export const serializeLayout = (layout: DungeonLayoutType, optimize = true): Dun
 export const deserializeLayout = (simplifiedLayout: DungeonSimplifiedSquareType[], layoutSize: number): DungeonLayoutType => {
 	const dungeon = new Dungeon(createLayout(layoutSize))
 	const layout = dungeon.layout
+
+	console.log(`Size before desctructure = ${dungeon.layoutSize()}`)
   
 	simplifiedLayout.forEach(simplifiedSquare => {
 		const { x, y, isActive, color, tile, piece } = simplifiedSquare
@@ -76,6 +78,10 @@ export const deserializeLayout = (simplifiedLayout: DungeonSimplifiedSquareType[
 		if (tile) layout[key].description.tile = new Tile(tile.name)
 		if (piece) layout[key].description.piece = new Piece({ ...piece, moves: [PresetMoves[piece.name]] })
 	})
+
+	dungeon.layout = { ...dungeon.layout, ...layout }
+
+	console.log(`Size after destructure = ${dungeon.layoutSize()}`)
 
 	return { ...dungeon.layout, ...layout }
 }
