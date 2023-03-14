@@ -5,8 +5,6 @@ import { Square } from "./Square/Square"
 import { Tile } from "./Tile/Tile"
 import { Piece } from "../Piece/Piece"
 import PresetMoves from "../Piece/Moves/PresetMoves"
-import { Dungeon } from "./Dungeon"
-import { createLayout } from "./createLayout"
 
 export const serializeLayout = (layout: DungeonLayoutType, optimize = true): DungeonSimplifiedSquareType[] => {
 	if (!optimize) {
@@ -58,11 +56,8 @@ export const serializeLayout = (layout: DungeonLayoutType, optimize = true): Dun
 	)
 }
 
-export const deserializeLayout = (simplifiedLayout: DungeonSimplifiedSquareType[], layoutSize: number): DungeonLayoutType => {
-	const dungeon = new Dungeon(createLayout(layoutSize))
-	const layout = dungeon.layout
-
-	console.log(`Size before desctructure = ${dungeon.layoutSize()}`)
+export const deserializeLayout = (simplifiedLayout: DungeonSimplifiedSquareType[]): DungeonLayoutType => {
+	const layout: DungeonLayoutType = {}
   
 	simplifiedLayout.forEach(simplifiedSquare => {
 		const { x, y, isActive, color, tile, piece } = simplifiedSquare
@@ -79,11 +74,7 @@ export const deserializeLayout = (simplifiedLayout: DungeonSimplifiedSquareType[
 		if (piece) layout[key].description.piece = new Piece({ ...piece, moves: [PresetMoves[piece.name]] })
 	})
 
-	dungeon.layout = { ...dungeon.layout, ...layout }
-
-	console.log(`Size after destructure = ${dungeon.layoutSize()}`)
-
-	return { ...dungeon.layout, ...layout }
+	return layout
 }
 
 export const layoutToJSON = (layout: DungeonLayoutType, optimize = true): string => {
