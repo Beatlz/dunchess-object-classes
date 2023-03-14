@@ -77,7 +77,7 @@ export const deserializeLayout = (simplifiedLayout: DungeonSimplifiedSquareType[
 		if (piece) layout[key].description.piece = new Piece({ ...piece, moves: [PresetMoves[piece.name]] })
 	})
 
-	return layout
+	return { ...dungeon.layout, ...layout }
 }
 
 export const layoutToJSON = (layout: DungeonLayoutType, optimize = true): string => {
