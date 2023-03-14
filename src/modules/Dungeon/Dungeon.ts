@@ -29,9 +29,9 @@ export class Dungeon {
 	layoutSize(as2D?: `2D`): number {
 		const totalSquares = Object.keys(this.layout).length
 
-		return as2D !== `2D`
-			? Math.sqrt(totalSquares)
-			: totalSquares
+		return as2D === `2D`
+			? totalSquares
+			: Math.sqrt(totalSquares)
 	}
 
 	getSquare({ x, y }: CoordsType): Square {
