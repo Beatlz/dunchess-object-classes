@@ -24,7 +24,9 @@ export const serializeLayout = (layout: DungeonLayoutType, optimize = true): Dun
 					color: square.description.piece?.description.color,
 				}
 			}
-			if (square.description.tile) simplifiedSquare.tile = square.description.tile?.name
+			if (square.description.tile) simplifiedSquare.tile = {
+				name: square.description.tile?.name
+			}
 
 			return simplifiedSquare
 		})
@@ -47,7 +49,9 @@ export const serializeLayout = (layout: DungeonLayoutType, optimize = true): Dun
 					color: square.description.piece?.description.color,
 				}
 			}
-			if (square.description.tile) simplifiedSquare.tile = square.description.tile?.name
+			if (square.description.tile) simplifiedSquare.tile = {
+				name: square.description.tile?.name
+			}
 
 			return simplifiedSquare
 		}
@@ -69,7 +73,7 @@ export const deserializeLayout = (simplifiedLayout: DungeonSimplifiedSquareType[
 			color,
 		})
 
-		if (tile) layout[key].description.tile = new Tile(tile)
+		if (tile) layout[key].description.tile = new Tile(tile.name)
 		if (piece) layout[key].description.piece = new Piece({ ...piece, moves: [PresetMoves[piece.name]] })
 	})
 
