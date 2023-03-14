@@ -25,7 +25,7 @@ export const serializeLayout = (layout: DungeonLayoutType, optimize = true): Dun
 				}
 			}
 			if (square.description.tile) simplifiedSquare.tile = {
-				name: square.description.tile?.name
+				name: square.description.tile?.name,
 			}
 
 			return simplifiedSquare
@@ -50,7 +50,7 @@ export const serializeLayout = (layout: DungeonLayoutType, optimize = true): Dun
 				}
 			}
 			if (square.description.tile) simplifiedSquare.tile = {
-				name: square.description.tile?.name
+				name: square.description.tile?.name,
 			}
 
 			return simplifiedSquare
