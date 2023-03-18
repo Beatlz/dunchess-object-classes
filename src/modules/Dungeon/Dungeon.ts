@@ -54,6 +54,11 @@ export class Dungeon {
 				layout[key] = square
 			}
 		})
+
+		this.layout = {
+			...layout,
+			...this.layout,
+		}
 	}
 	cropLayout() {
 		const coords = Object.keys(this.layout).map(key => deserializeKey(key))
